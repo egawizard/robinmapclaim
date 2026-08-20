@@ -1,1 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROBINMAP — Claim Your Spot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0c0a;
+    --bg-panel: #101410;
+    --grid-line: #1b201b;
+    --green: #17d97a;
+    --green-dim: #0e6b3f;
+    --amber: #e8b34a;
+    --ink: #e9ede8;
+    --ink-dim: #8a938a;
+    --ink-faint: #4d564d;
+    --danger: #ff5c5c;
+    --radius: 2px;
+  }
 
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono{ font-family:'Space Mono', monospace; }
+  a{ color: inherit; }
+  ::selection{ background: var(--green); color: #06110a; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  .grid-field{
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 42px 42px;
+    z-index: 0; pointer-events: none;
+    mask-image: radial-gradient(ellipse 90% 60% at 50% 20%, black 30%, transparent 85%);
+  }
+
+  .container{ max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* NAV */
+  nav{
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(10,12,10,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--grid-line);
+  }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; padding: 18px 24px; max-width: 1080px; margin: 0 auto; gap: 16px; }
+  .wordmark{ font-family:'Space Mono', monospace; font-weight:700; font-size: 17px; letter-spacing: 0.02em; display:flex; align-items:center; gap: 8px; white-space: nowrap; }
+  .wordmark .dot{ width:8px; height:8px; background:var(--green); box-shadow: 0 0 8px var(--green); animation: blink 2.4s ease-in-out infinite; }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+  .nav-links{ display:flex; gap: 28px; font-size: 13px; color: var(--ink-dim); }
+  .nav-links a{ text-decoration:none; }
+  .nav-links a:hover{ color: var(--green); }
+  .nav-right{ display:flex; align-items:center; gap: 12px; }
+  .nav-cta{ font-family:'Space Mono', monospace; font-size: 12px; border: 1px solid var(--green-dim); color: var(--green); padding: 8px 14px; text-decoration: none; transition: background 0.15s, color 0.15s; white-space:nowrap; }
+  .nav-cta:hover{ background: var(--green); color:#06110a; }
+  .lang-toggle{
+    display:flex; font-family:'Space Mono', monospace; font-size: 12px;
+    border: 1px solid var(--grid-line); overflow:hidden;
+  }
+  .lang-toggle button{
+    background: transparent; border: none; color: var(--ink-dim);
+    padding: 8px 12px; cursor: pointer; font-family: inherit; font-size: inherit;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lang-toggle button.active{ background: var(--green); color: #06110a; }
+  .lang-toggle button:not(.active):hover{ color: var(--ink); }
+  @media (max-width: 640px){ .nav-links{ display:none; } }
+
+  /* HERO */
+  .hero{ padding: 96px 0 64px; position: relative; }
+  .eyebrow{
+    font-family:'Space Mono', monospace; font-size: 12px; color: var(--green);
+    letter-spacing: 0.12em; text-transform: uppercase; display:flex; align-items:center; gap:10px; margin-bottom: 22px;
+  }
+  .eyebrow::before{ content:''; width: 26px; height:1px; background: var(--green); }
+  h1{ font-size: clamp(40px, 6vw, 68px); line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; max-width: 780px; }
+  h1 .accent{ color: var(--green); }
+  .hero-sub{ margin-top: 22px; font-size: 17px; color: var(--ink-dim); max-width: 560px; }
+  .hero-actions{ margin-top: 36px; display:flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary{
+    font-family:'Space Mono', monospace; background: var(--green); color: #06110a; border: none;
+    padding: 15px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
+    text-decoration: none; display:inline-block; cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .btn-primary:hover{ box-shadow: 0 0 0 3px rgba(23,217,122,0.18); transform: translateY(-1px); }
+  .btn-primary:disabled{ opacity: 0.55; cursor: not-allowed; transform:none; box-shadow:none; }
+  .btn-ghost{
+    font-family:'Space Mono', monospace; background: transparent; color: var(--ink-dim);
+    border: 1px solid var(--grid-line); padding: 15px 26px; font-size: 13px; text-decoration: none; display:inline-block;
+  }
+  .btn-ghost:hover{ border-color: var(--ink-faint); color: var(--ink); }
+
+  /* STAT STRIP */
+  .stat-strip{ margin-top: 72px; border-top: 1px solid var(--grid-line); border-bottom: 1px solid var(--grid-line); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat{ padding: 22px 20px; border-right: 1px solid var(--grid-line); }
+  .stat:last-child{ border-right: none; }
+  .stat-label{ font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; font-family:'Space Mono', monospace; }
+  .stat-value{ margin-top: 8px; font-family:'Space Mono', monospace; font-size: 22px; color: var(--ink); font-weight: 700; }
+  @media (max-width: 720px){ .stat-strip{ grid-template-columns: repeat(2, 1fr); } .stat:nth-child(2){ border-right:none; } }
+
+  /* SECTIONS */
+  .section{ padding: 96px 0; }
+  .section-head{ display:flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 40px; border-bottom: 1px solid var(--grid-line); padding-bottom: 20px; }
+  .section-title{ font-size: 28px; font-weight: 800; letter-spacing: -0.01em; }
+  .section-index{ font-family:'Space Mono', monospace; color: var(--ink-faint); font-size: 13px; }
+
+  .about-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+  .about-grid p{ color: var(--ink-dim); font-size: 15.5px; margin-bottom: 18px; max-width: 480px; }
+  .coord-panel{ background: var(--bg-panel); border: 1px solid var(--grid-line); padding: 22px; font-family:'Space Mono', monospace; font-size: 12.5px; color: var(--green); }
+  .coord-panel .row{ display:flex; justify-content:space-between; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--grid-line); color: var(--ink-dim); }
+  .coord-panel .row span:first-child{ white-space:nowrap; }
+  .coord-panel .row span:last-child{ color: var(--ink); text-align:right; word-break: break-all; }
+  .coord-panel .row:last-child{ border-bottom:none; }
+  @media (max-width: 800px){ .about-grid{ grid-template-columns: 1fr; } }
+
+  /* CLAIM SECTION */
+  .claim-wrap{ background: var(--bg-panel); border: 1px solid var(--grid-line); position: relative; overflow: hidden; }
+  .claim-scan{ position: absolute; top:0; left:0; right:0; height: 2px; background: linear-gradient(90deg, transparent, var(--green), transparent); animation: scan 3.2s linear infinite; opacity: 0.7; }
+  @keyframes scan{ 0%{ transform: translateY(0); } 100%{ transform: translateY(340px); } }
+  .claim-inner{ position: relative; z-index: 1; padding: 48px; display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; }
+  @media (max-width: 800px){ .claim-inner{ grid-template-columns: 1fr; padding: 32px 24px; } }
+  .claim-left h3{ font-size: 24px; font-weight: 800; margin-bottom: 14px; }
+  .claim-left p{ color: var(--ink-dim); font-size: 14.5px; max-width: 380px; }
+  .claim-left .badge-row{ margin-top: 24px; display:flex; flex-wrap: wrap; gap: 8px; }
+  .badge{ font-family:'Space Mono', monospace; font-size: 11px; color: var(--ink-dim); border: 1px solid var(--grid-line); padding: 6px 10px; }
+  .badge.gate{ color: var(--amber); border-color: rgba(232,179,74,0.3); }
+
+  .ca-row{ margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--grid-line); }
+  .ca-label{ font-family:'Space Mono', monospace; font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .ca-value{ display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
+  .ca-code{ font-family:'Space Mono', monospace; font-size: 12px; color: var(--green); word-break: break-all; }
+  .copy-btn{ font-family:'Space Mono', monospace; font-size: 10.5px; color: var(--ink-dim); background: transparent; border: 1px solid var(--grid-line); padding: 4px 8px; cursor:pointer; white-space:nowrap; }
+  .copy-btn:hover{ border-color: var(--ink-faint); color: var(--ink); }
+
+  form{ display:flex; flex-direction: column; gap: 16px; }
+  label{ font-family:'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); display:block; margin-bottom: 8px; }
+  input[type="text"], input[type="email"]{
+    width: 100%; background-color: #060806; border: 1px solid var(--grid-line); color: var(--ink);
+    font-family:'Space Mono', monospace; font-size: 14px; padding: 14px 14px; outline: none; transition: border-color 0.12s;
+  }
+  input[type="text"]:focus, input[type="email"]:focus{ border-color: var(--green); box-shadow: 0 0 0 3px rgba(23,217,122,0.14); }
+  input::placeholder{ color: var(--ink-faint); }
+  .field-error{ font-family:'Space Mono', monospace; font-size: 11.5px; color: var(--danger); min-height: 14px; margin-top: -8px; }
+  .submit-row{ display:flex; align-items:center; gap: 16px; margin-top: 6px; flex-wrap: wrap; }
+  .status-msg{ font-family:'Space Mono', monospace; font-size: 12.5px; }
+  .status-msg.ok{ color: var(--green); }
+  .status-msg.err{ color: var(--danger); }
+  .status-msg.pending{ color: var(--amber); }
+  .hp-field{ position:absolute; left:-9999px; opacity:0; }
+
+  .balance-panel{
+    margin-top: 4px; font-family:'Space Mono', monospace; font-size: 12px;
+    border: 1px solid var(--grid-line); padding: 12px 14px; display:none;
+  }
+  .balance-panel.show{ display:block; }
+  .balance-panel .row{ display:flex; justify-content:space-between; padding: 3px 0; color: var(--ink-dim); }
+  .balance-panel .row span:last-child{ color: var(--ink); }
+  .balance-panel.eligible{ border-color: var(--green-dim); }
+  .balance-panel.eligible .row span:last-child{ color: var(--green); }
+  .balance-panel.ineligible{ border-color: rgba(255,92,92,0.35); }
+  .balance-panel.ineligible .row span:last-child{ color: var(--danger); }
+
+  footer{ border-top: 1px solid var(--grid-line); padding: 32px 0 48px; color: var(--ink-faint); font-size: 12.5px; display:flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer .mono{ font-size: 11.5px; }
+</style>
+</head>
+<body>
+
+<div class="grid-field"></div>
+
+<nav>
+  <div class="nav-row">
+    <div class="wordmark"><span class="dot"></span>ROBINMAP</div>
+    <div class="nav-links">
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#utility" data-i18n="nav_utility">Utility</a>
+      <a href="#claim" data-i18n="nav_claim">Claim</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button type="button" id="lang-en" class="active">EN</button>
+        <button type="button" id="lang-zh">中文</button>
+      </div>
+      <a href="#claim" class="nav-cta" data-i18n="nav_cta">Claim Spot →</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="eyebrow" data-i18n="eyebrow">Robinhood Chain · Genesis Collection</div>
+    <h1><span data-i18n="hero_line1">Every piece is drawn</span><br><span class="accent" data-i18n="hero_line2">from a single block hash.</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.</p>
+    <div class="hero-actions">
+      <a href="#claim" class="btn-primary" data-i18n="btn_claim">CLAIM YOUR SPOT</a>
+      <a href="#about" class="btn-ghost" data-i18n="btn_howworks">HOW IT WORKS</a>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="stat-label" data-i18n="stat_supply_label">Supply</div><div class="stat-value">10,000</div></div>
+      <div class="stat"><div class="stat-label" data-i18n="stat_rev_label">Revenue Share</div><div class="stat-value">70%</div></div>
+      <div class="stat"><div class="stat-label" data-i18n="stat_trait_label">Trait Source</div><div class="stat-value" data-i18n="stat_trait_value">Genesis Hash</div></div>
+      <div class="stat"><div class="stat-label" data-i18n="stat_verify_label">Verification</div><div class="stat-value" data-i18n="stat_verify_value">Merkle Proof</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-head">
+      <div class="section-title" data-i18n="about_title">The map is the mechanism</div>
+      <div class="section-index mono">01 / 02</div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p data-i18n="about_p1">Rather than randomizing traits off-chain, ROBINMAP reads coordinates directly out of Robinhood Chain's genesis block. Each piece's position, palette, and rarity tier are hash-derived — meaning the collection's layout existed the moment the chain did.</p>
+        <p data-i18n="about_p2">Every mint is checkable against a public Merkle proof, so ownership and trait authenticity can be verified independently of the mint site at any time.</p>
+      </div>
+      <div class="coord-panel">
+        <div class="row"><span>chain</span><span>Robinhood Chain (4663)</span></div>
+        <div class="row"><span>collection_size</span><span>10,000</span></div>
+        <div class="row"><span>trait_source</span><span>genesis_block_hash</span></div>
+        <div class="row"><span>proof_type</span><span>merkle</span></div>
+        <div class="row"><span>holder_revenue_share</span><span>70%</span></div>
+        <div class="row"><span>eligibility_token</span><span>$RSC</span></div>
+        <div class="row"><span>min_hold</span><span>50,000 $RSC</span></div>
+        <div class="row"><span>status</span><span data-i18n="coord_status">pre-claim</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="utility">
+    <div class="section-head">
+      <div class="section-title" id="claim" data-i18n="claim_title">Claim your spot</div>
+      <div class="section-index mono">02 / 02</div>
+    </div>
+
+    <div class="claim-wrap">
+      <div class="claim-scan"></div>
+      <div class="claim-inner">
+        <div class="claim-left">
+          <h3 data-i18n="claim_h3">Reserve a coordinate.</h3>
+          <p data-i18n="claim_p">Paste the wallet address you'll use to mint. We check your $RSC balance on-chain before your entry is accepted — this does not connect a wallet or cost anything.</p>
+          <div class="badge-row">
+            <span class="badge gate" data-i18n="badge_gate">Requires 50,000+ $RSC</span>
+            <span class="badge" data-i18n="badge_nowallet">No wallet connection</span>
+            <span class="badge" data-i18n="badge_nopay">No payment</span>
+            <span class="badge" data-i18n="badge_oneentry">One entry per wallet</span>
+          </div>
+
+          <div class="ca-row">
+            <div class="ca-label" data-i18n="ca_label">$RSC contract address</div>
+            <div class="ca-value">
+              <span class="ca-code mono" id="ca-text">0xe44946965bbc759399c42b5e5a8fbd24408b66b0</span>
+              <button type="button" class="copy-btn" id="copy-ca" data-i18n="copy_btn">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <form id="claim-form">
+            <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+
+            <div>
+              <label for="wallet" data-i18n="label_wallet">Wallet address</label>
+              <input type="text" id="wallet" name="wallet_address" placeholder="0x...">
+              <div class="field-error" id="wallet-error"></div>
+            </div>
+
+            <div>
+              <label for="handle" data-i18n="label_handle">X / Twitter handle (optional)</label>
+              <input type="text" id="handle" name="twitter_handle" placeholder="@yourhandle">
+            </div>
+
+            <div class="balance-panel" id="balance-panel">
+              <div class="row"><span data-i18n="bal_row_balance">$RSC balance</span><span id="bal-amount">—</span></div>
+              <div class="row"><span data-i18n="bal_row_required">Required</span><span>50,000 $RSC</span></div>
+              <div class="row"><span data-i18n="bal_row_status">Status</span><span id="bal-status">—</span></div>
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" class="btn-primary" id="submit-btn" data-i18n="btn_submit">CHECK & CLAIM MY SPOT</button>
+              <span class="status-msg" id="status-msg"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="container">
+  <div data-i18n="footer_line">© ROBINMAP — a Robscription ecosystem project.</div>
+  <div class="mono">admin@robscription.com</div>
+</footer>
+
+<script>
+  /* ---------------- i18n ---------------- */
+  const translations = {
+    en: {
+      nav_about: "About", nav_utility: "Utility", nav_claim: "Claim", nav_cta: "Claim Spot →",
+      eyebrow: "Robinhood Chain · Genesis Collection",
+      hero_line1: "Every piece is drawn",
+      hero_line2: "from a single block hash.",
+      hero_sub: "ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.",
+      btn_claim: "CLAIM YOUR SPOT",
+      btn_howworks: "HOW IT WORKS",
+      stat_supply_label: "Supply", stat_rev_label: "Revenue Share",
+      stat_trait_label: "Trait Source", stat_trait_value: "Genesis Hash",
+      stat_verify_label: "Verification", stat_verify_value: "Merkle Proof",
+      about_title: "The map is the mechanism",
+      about_p1: "Rather than randomizing traits off-chain, ROBINMAP reads coordinates directly out of Robinhood Chain's genesis block. Each piece's position, palette, and rarity tier are hash-derived — meaning the collection's layout existed the moment the chain did.",
+      about_p2: "Every mint is checkable against a public Merkle proof, so ownership and trait authenticity can be verified independently of the mint site at any time.",
+      coord_status: "pre-claim",
+      claim_title: "Claim your spot",
+      claim_h3: "Reserve a coordinate.",
+      claim_p: "Paste the wallet address you'll use to mint. We check your $RSC balance on-chain before your entry is accepted — this does not connect a wallet or cost anything.",
+      badge_gate: "Requires 50,000+ $RSC",
+      badge_nowallet: "No wallet connection",
+      badge_nopay: "No payment",
+      badge_oneentry: "One entry per wallet",
+      ca_label: "$RSC contract address",
+      copy_btn: "Copy",
+      copy_btn_done: "Copied",
+      label_wallet: "Wallet address",
+      label_handle: "X / Twitter handle (optional)",
+      bal_row_balance: "$RSC balance",
+      bal_row_required: "Required",
+      bal_row_status: "Status",
+      bal_status_eligible: "Eligible",
+      bal_status_ineligible: "Not eligible",
+      btn_submit: "CHECK & CLAIM MY SPOT",
+      btn_checking: "CHECKING BALANCE...",
+      btn_submitting: "SUBMITTING...",
+      err_invalid_wallet: "Enter a valid wallet address (starts with 0x, 42 characters).",
+      err_rpc: "Couldn't reach Robinhood Chain to verify balance. Please try again.",
+      err_ineligible: "This wallet holds fewer than 50,000 $RSC and isn't eligible yet.",
+      err_not_connected: "Sheet not connected yet — add your Apps Script Web App URL.",
+      err_generic: "Something went wrong. Please try again.",
+      err_network: "Network error. Please try again.",
+      ok_claimed: "Spot claimed — check your wallet for updates.",
+      footer_line: "© ROBINMAP — a Robscription ecosystem project."
+    },
+    zh: {
+      nav_about: "关于", nav_utility: "机制", nav_claim: "领取", nav_cta: "领取名额 →",
+      eyebrow: "Robinhood Chain · 创世收藏",
+      hero_line1: "每一枚都源自",
+      hero_line2: "唯一的创世区块哈希。",
+      hero_sub: "ROBINMAP 是一个 10,000 枚的生成式收藏系列，每个特征都直接来自创世区块哈希，并通过默克尔证明在链上验证。没有两个坐标是相同的。",
+      btn_claim: "领取名额",
+      btn_howworks: "了解机制",
+      stat_supply_label: "供应量", stat_rev_label: "收益分成",
+      stat_trait_label: "特征来源", stat_trait_value: "创世哈希",
+      stat_verify_label: "验证方式", stat_verify_value: "默克尔证明",
+      about_title: "地图即机制",
+      about_p1: "ROBINMAP 不在链下随机生成特征，而是直接从 Robinhood Chain 的创世区块中读取坐标。每一枚作品的位置、配色和稀有度都由哈希值决定——也就是说，这套收藏的布局在链诞生的那一刻就已经存在。",
+      about_p2: "每一次铸造都可以通过公开的默克尔证明进行核验，因此持有权和特征真实性可以随时独立于铸造网站进行验证。",
+      coord_status: "待领取",
+      claim_title: "领取你的名额",
+      claim_h3: "预留一个坐标。",
+      claim_p: "粘贴你将用于铸造的钱包地址。在名额被接受之前，我们会在链上核查你的 $RSC 余额——此过程不需要连接钱包，也不产生任何费用。",
+      badge_gate: "需持有 50,000+ 枚 $RSC",
+      badge_nowallet: "无需连接钱包",
+      badge_nopay: "无需付款",
+      badge_oneentry: "每个钱包限一次",
+      ca_label: "$RSC 合约地址",
+      copy_btn: "复制",
+      copy_btn_done: "已复制",
+      label_wallet: "钱包地址",
+      label_handle: "X / Twitter 账号（选填）",
+      bal_row_balance: "$RSC 余额",
+      bal_row_required: "所需数量",
+      bal_row_status: "状态",
+      bal_status_eligible: "符合资格",
+      bal_status_ineligible: "不符合资格",
+      btn_submit: "核查并领取名额",
+      btn_checking: "正在核查余额...",
+      btn_submitting: "提交中...",
+      err_invalid_wallet: "请输入有效的钱包地址（以 0x 开头，共 42 位字符）。",
+      err_rpc: "无法连接 Robinhood Chain 核查余额，请重试。",
+      err_ineligible: "该钱包持有的 $RSC 不足 50,000 枚，暂不符合领取资格。",
+      err_not_connected: "表格尚未连接 —— 请添加你的 Apps Script Web App 网址。",
+      err_generic: "出现问题，请重试。",
+      err_network: "网络错误，请重试。",
+      ok_claimed: "名额已领取 —— 请留意你的钱包更新。",
+      footer_line: "© ROBINMAP —— Robscription 生态项目。"
+    }
+  };
+
+  let currentLang = "en";
+
+  function applyLang(lang){
+    currentLang = lang;
+    document.documentElement.lang = (lang === "zh") ? "zh-CN" : "en";
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if(translations[lang][key] !== undefined){
+        el.textContent = translations[lang][key];
+      }
+    });
+    document.getElementById("lang-en").classList.toggle("active", lang === "en");
+    document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+    // reset dynamic panels/messages to neutral state on language switch
+    document.getElementById("status-msg").textContent = "";
+    document.getElementById("status-msg").className = "status-msg";
+  }
+
+  document.getElementById("lang-en").addEventListener("click", () => applyLang("en"));
+  document.getElementById("lang-zh").addEventListener("click", () => applyLang("zh"));
+
+  /* ---------------- copy contract address ---------------- */
+  document.getElementById("copy-ca").addEventListener("click", async () => {
+    const text = document.getElementById("ca-text").textContent;
+    try{
+      await navigator.clipboard.writeText(text);
+      const btn = document.getElementById("copy-ca");
+      const original = translations[currentLang].copy_btn;
+      btn.textContent = translations[currentLang].copy_btn_done;
+      setTimeout(() => { btn.textContent = translations[currentLang].copy_btn; }, 1500);
+    }catch(err){ /* clipboard not available, ignore */ }
+  });
+
+  /* ---------------- on-chain $RSC balance check ---------------- */
+  const RPC_URL = "https://rpc.mainnet.chain.robinhood.com";
+  const RSC_CONTRACT = "0xe44946965bbc759399c42b5e5a8fbd24408b66b0";
+  const MIN_RSC_REQUIRED = 50000;
+
+  async function rpcCall(to, data){
+    const res = await fetch(RPC_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0", id: 1, method: "eth_call",
+        params: [{ to: to, data: data }, "latest"]
+      })
+    });
+    const json = await res.json();
+    if(json.error) throw new Error(json.error.message || "RPC error");
+    return json.result;
+  }
+
+  function padAddress(address){
+    return address.toLowerCase().replace("0x", "").padStart(64, "0");
+  }
+
+  async function getRscBalance(walletAddress){
+    // decimals() -> 0x313ce567
+    const decimalsHex = await rpcCall(RSC_CONTRACT, "0x313ce567");
+    const decimals = parseInt(decimalsHex, 16);
+
+    // balanceOf(address) -> 0x70a08231 + padded address
+    const balanceHex = await rpcCall(RSC_CONTRACT, "0x70a08231" + padAddress(walletAddress));
+    const rawBalance = BigInt(balanceHex);
+
+    const balance = Number(rawBalance) / Math.pow(10, decimals);
+    return balance;
+  }
+
+  function formatNumber(n){
+    return n.toLocaleString("en-US", { maximumFractionDigits: 2 });
+  }
+
+  /* ---------------- form submission ---------------- */
+  const form = document.getElementById('claim-form');
+  const walletInput = document.getElementById('wallet');
+  const walletError = document.getElementById('wallet-error');
+  const statusMsg = document.getElementById('status-msg');
+  const submitBtn = document.getElementById('submit-btn');
+  const balancePanel = document.getElementById('balance-panel');
+  const balAmount = document.getElementById('bal-amount');
+  const balStatus = document.getElementById('bal-status');
+
+  // Your deployed Google Apps Script Web App URL
+  const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbwZxRs-sWGMvYaCMWajlosIoLwdaJB91RQPfMoUpQaLbJ7nbBTk6V57QlBMFICD4_Af/exec";
+
+  function isValidAddress(v){
+    return /^0x[a-fA-F0-9]{40}$/.test(v.trim());
+  }
+
+  function t(key){ return translations[currentLang][key]; }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    walletError.textContent = "";
+    statusMsg.textContent = "";
+    statusMsg.className = "status-msg";
+    balancePanel.className = "balance-panel";
+
+    const wallet = walletInput.value.trim();
+    const handle = document.getElementById('handle').value.trim();
+    const honeypot = form.botcheck.checked;
+
+    if(!isValidAddress(wallet)){
+      walletError.textContent = t("err_invalid_wallet");
+      return;
+    }
+
+    if(honeypot){
+      form.reset();
+      statusMsg.textContent = t("ok_claimed");
+      statusMsg.className = "status-msg ok";
+      return;
+    }
+
+    if(SHEET_ENDPOINT.indexOf("YOUR_APPS_SCRIPT") !== -1){
+      statusMsg.textContent = t("err_not_connected");
+      statusMsg.className = "status-msg err";
+      return;
+    }
+
+    // Step 1: check on-chain $RSC balance
+    submitBtn.disabled = true;
+    submitBtn.textContent = t("btn_checking");
+    statusMsg.textContent = "";
+    statusMsg.className = "status-msg pending";
+
+    let balance;
+    try{
+      balance = await getRscBalance(wallet);
+    }catch(err){
+      submitBtn.disabled = false;
+      submitBtn.textContent = t("btn_submit");
+      statusMsg.textContent = t("err_rpc");
+      statusMsg.className = "status-msg err";
+      return;
+    }
+
+    const eligible = balance >= MIN_RSC_REQUIRED;
+    balAmount.textContent = formatNumber(balance) + " $RSC";
+    balStatus.textContent = eligible ? t("bal_status_eligible") : t("bal_status_ineligible");
+    balancePanel.classList.add("show");
+    balancePanel.classList.add(eligible ? "eligible" : "ineligible");
+
+    if(!eligible){
+      submitBtn.disabled = false;
+      submitBtn.textContent = t("btn_submit");
+      statusMsg.textContent = t("err_ineligible");
+      statusMsg.className = "status-msg err";
+      return;
+    }
+
+    // Step 2: eligible — submit to Google Sheet
+    submitBtn.textContent = t("btn_submitting");
+
+    const body = new URLSearchParams();
+    body.append("wallet_address", wallet);
+    body.append("twitter_handle", handle);
+    body.append("rsc_balance", String(balance));
+    body.append("source", "robinmap-claim-page");
+
+    try{
+      const res = await fetch(SHEET_ENDPOINT, { method: "POST", body: body });
+      const data = await res.json();
+
+      if(data.result === "success"){
+        statusMsg.textContent = t("ok_claimed");
+        statusMsg.className = "status-msg ok";
+        form.reset();
+      } else {
+        statusMsg.textContent = data.message || t("err_generic");
+        statusMsg.className = "status-msg err";
+      }
+    } catch(err){
+      statusMsg.textContent = t("err_network");
+      statusMsg.className = "status-msg err";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = t("btn_submit");
+    }
+  });
+</script>
+
+</body>
+</html>
