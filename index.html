@@ -137,14 +137,6 @@
   .claim-left p{ color: var(--ink-dim); font-size: 14.5px; max-width: 380px; }
   .claim-left .badge-row{ margin-top: 24px; display:flex; flex-wrap: wrap; gap: 8px; }
   .badge{ font-family:'Space Mono', monospace; font-size: 11px; color: var(--ink-dim); border: 1px solid var(--grid-line); padding: 6px 10px; }
-  .badge.gate{ color: var(--amber); border-color: rgba(232,179,74,0.3); }
-
-  .ca-row{ margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--grid-line); }
-  .ca-label{ font-family:'Space Mono', monospace; font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-  .ca-value{ display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
-  .ca-code{ font-family:'Space Mono', monospace; font-size: 12px; color: var(--green); word-break: break-all; }
-  .copy-btn{ font-family:'Space Mono', monospace; font-size: 10.5px; color: var(--ink-dim); background: transparent; border: 1px solid var(--grid-line); padding: 4px 8px; cursor:pointer; white-space:nowrap; }
-  .copy-btn:hover{ border-color: var(--ink-faint); color: var(--ink); }
 
   form{ display:flex; flex-direction: column; gap: 16px; }
   label{ font-family:'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); display:block; margin-bottom: 8px; }
@@ -161,18 +153,6 @@
   .status-msg.err{ color: var(--danger); }
   .status-msg.pending{ color: var(--amber); }
   .hp-field{ position:absolute; left:-9999px; opacity:0; }
-
-  .balance-panel{
-    margin-top: 4px; font-family:'Space Mono', monospace; font-size: 12px;
-    border: 1px solid var(--grid-line); padding: 12px 14px; display:none;
-  }
-  .balance-panel.show{ display:block; }
-  .balance-panel .row{ display:flex; justify-content:space-between; padding: 3px 0; color: var(--ink-dim); }
-  .balance-panel .row span:last-child{ color: var(--ink); }
-  .balance-panel.eligible{ border-color: var(--green-dim); }
-  .balance-panel.eligible .row span:last-child{ color: var(--green); }
-  .balance-panel.ineligible{ border-color: rgba(255,92,92,0.35); }
-  .balance-panel.ineligible .row span:last-child{ color: var(--danger); }
 
   footer{ border-top: 1px solid var(--grid-line); padding: 32px 0 48px; color: var(--ink-faint); font-size: 12.5px; display:flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   footer .mono{ font-size: 11.5px; }
@@ -235,8 +215,6 @@
         <div class="row"><span>trait_source</span><span>genesis_block_hash</span></div>
         <div class="row"><span>proof_type</span><span>merkle</span></div>
         <div class="row"><span>holder_revenue_share</span><span>70%</span></div>
-        <div class="row"><span>eligibility_token</span><span>$RSC</span></div>
-        <div class="row"><span>min_hold</span><span>50,000 $RSC</span></div>
         <div class="row"><span>status</span><span data-i18n="coord_status">pre-claim</span></div>
       </div>
     </div>
@@ -253,20 +231,11 @@
       <div class="claim-inner">
         <div class="claim-left">
           <h3 data-i18n="claim_h3">Reserve a coordinate.</h3>
-          <p data-i18n="claim_p">Paste the wallet address you'll use to mint. We check your $RSC balance on-chain before your entry is accepted — this does not connect a wallet or cost anything.</p>
+          <p data-i18n="claim_p">Paste the wallet address you'll use to mint. This does not connect a wallet and does not cost anything — it registers your address on the pre-claim list before public mint opens.</p>
           <div class="badge-row">
-            <span class="badge gate" data-i18n="badge_gate">Requires 50,000+ $RSC</span>
             <span class="badge" data-i18n="badge_nowallet">No wallet connection</span>
             <span class="badge" data-i18n="badge_nopay">No payment</span>
             <span class="badge" data-i18n="badge_oneentry">One entry per wallet</span>
-          </div>
-
-          <div class="ca-row">
-            <div class="ca-label" data-i18n="ca_label">$RSC contract address</div>
-            <div class="ca-value">
-              <span class="ca-code mono" id="ca-text">0xe44946965bbc759399c42b5e5a8fbd24408b66b0</span>
-              <button type="button" class="copy-btn" id="copy-ca" data-i18n="copy_btn">Copy</button>
-            </div>
           </div>
         </div>
 
@@ -285,14 +254,8 @@
               <input type="text" id="handle" name="twitter_handle" placeholder="@yourhandle">
             </div>
 
-            <div class="balance-panel" id="balance-panel">
-              <div class="row"><span data-i18n="bal_row_balance">$RSC balance</span><span id="bal-amount">—</span></div>
-              <div class="row"><span data-i18n="bal_row_required">Required</span><span>50,000 $RSC</span></div>
-              <div class="row"><span data-i18n="bal_row_status">Status</span><span id="bal-status">—</span></div>
-            </div>
-
             <div class="submit-row">
-              <button type="submit" class="btn-primary" id="submit-btn" data-i18n="btn_submit">CHECK & CLAIM MY SPOT</button>
+              <button type="submit" class="btn-primary" id="submit-btn" data-i18n="btn_submit">CLAIM MY SPOT</button>
               <span class="status-msg" id="status-msg"></span>
             </div>
           </form>
@@ -328,27 +291,15 @@
       coord_status: "pre-claim",
       claim_title: "Claim your spot",
       claim_h3: "Reserve a coordinate.",
-      claim_p: "Paste the wallet address you'll use to mint. We check your $RSC balance on-chain before your entry is accepted — this does not connect a wallet or cost anything.",
-      badge_gate: "Requires 50,000+ $RSC",
+      claim_p: "Paste the wallet address you'll use to mint. This does not connect a wallet and does not cost anything — it registers your address on the pre-claim list before public mint opens.",
       badge_nowallet: "No wallet connection",
       badge_nopay: "No payment",
       badge_oneentry: "One entry per wallet",
-      ca_label: "$RSC contract address",
-      copy_btn: "Copy",
-      copy_btn_done: "Copied",
       label_wallet: "Wallet address",
       label_handle: "X / Twitter handle (optional)",
-      bal_row_balance: "$RSC balance",
-      bal_row_required: "Required",
-      bal_row_status: "Status",
-      bal_status_eligible: "Eligible",
-      bal_status_ineligible: "Not eligible",
-      btn_submit: "CHECK & CLAIM MY SPOT",
-      btn_checking: "CHECKING BALANCE...",
+      btn_submit: "CLAIM MY SPOT",
       btn_submitting: "SUBMITTING...",
       err_invalid_wallet: "Enter a valid wallet address (starts with 0x, 42 characters).",
-      err_rpc: "Couldn't reach Robinhood Chain to verify balance. Please try again.",
-      err_ineligible: "This wallet holds fewer than 50,000 $RSC and isn't eligible yet.",
       err_not_connected: "Sheet not connected yet — add your Apps Script Web App URL.",
       err_generic: "Something went wrong. Please try again.",
       err_network: "Network error. Please try again.",
@@ -372,27 +323,15 @@
       coord_status: "待领取",
       claim_title: "领取你的名额",
       claim_h3: "预留一个坐标。",
-      claim_p: "粘贴你将用于铸造的钱包地址。在名额被接受之前，我们会在链上核查你的 $RSC 余额——此过程不需要连接钱包，也不产生任何费用。",
-      badge_gate: "需持有 50,000+ 枚 $RSC",
+      claim_p: "粘贴你将用于铸造的钱包地址。此过程不需要连接钱包，也不产生任何费用——你的地址将被登记在公开铸造开始前的预领取名单中。",
       badge_nowallet: "无需连接钱包",
       badge_nopay: "无需付款",
       badge_oneentry: "每个钱包限一次",
-      ca_label: "$RSC 合约地址",
-      copy_btn: "复制",
-      copy_btn_done: "已复制",
       label_wallet: "钱包地址",
       label_handle: "X / Twitter 账号（选填）",
-      bal_row_balance: "$RSC 余额",
-      bal_row_required: "所需数量",
-      bal_row_status: "状态",
-      bal_status_eligible: "符合资格",
-      bal_status_ineligible: "不符合资格",
-      btn_submit: "核查并领取名额",
-      btn_checking: "正在核查余额...",
+      btn_submit: "立即领取",
       btn_submitting: "提交中...",
       err_invalid_wallet: "请输入有效的钱包地址（以 0x 开头，共 42 位字符）。",
-      err_rpc: "无法连接 Robinhood Chain 核查余额，请重试。",
-      err_ineligible: "该钱包持有的 $RSC 不足 50,000 枚，暂不符合领取资格。",
       err_not_connected: "表格尚未连接 —— 请添加你的 Apps Script Web App 网址。",
       err_generic: "出现问题，请重试。",
       err_network: "网络错误，请重试。",
@@ -422,67 +361,12 @@
   document.getElementById("lang-en").addEventListener("click", () => applyLang("en"));
   document.getElementById("lang-zh").addEventListener("click", () => applyLang("zh"));
 
-  /* ---------------- copy contract address ---------------- */
-  document.getElementById("copy-ca").addEventListener("click", async () => {
-    const text = document.getElementById("ca-text").textContent;
-    try{
-      await navigator.clipboard.writeText(text);
-      const btn = document.getElementById("copy-ca");
-      const original = translations[currentLang].copy_btn;
-      btn.textContent = translations[currentLang].copy_btn_done;
-      setTimeout(() => { btn.textContent = translations[currentLang].copy_btn; }, 1500);
-    }catch(err){ /* clipboard not available, ignore */ }
-  });
-
-  /* ---------------- on-chain $RSC balance check ---------------- */
-  const RPC_URL = "https://rpc.mainnet.chain.robinhood.com";
-  const RSC_CONTRACT = "0xe44946965bbc759399c42b5e5a8fbd24408b66b0";
-  const MIN_RSC_REQUIRED = 50000;
-
-  async function rpcCall(to, data){
-    const res = await fetch(RPC_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        jsonrpc: "2.0", id: 1, method: "eth_call",
-        params: [{ to: to, data: data }, "latest"]
-      })
-    });
-    const json = await res.json();
-    if(json.error) throw new Error(json.error.message || "RPC error");
-    return json.result;
-  }
-
-  function padAddress(address){
-    return address.toLowerCase().replace("0x", "").padStart(64, "0");
-  }
-
-  async function getRscBalance(walletAddress){
-    // decimals() -> 0x313ce567
-    const decimalsHex = await rpcCall(RSC_CONTRACT, "0x313ce567");
-    const decimals = parseInt(decimalsHex, 16);
-
-    // balanceOf(address) -> 0x70a08231 + padded address
-    const balanceHex = await rpcCall(RSC_CONTRACT, "0x70a08231" + padAddress(walletAddress));
-    const rawBalance = BigInt(balanceHex);
-
-    const balance = Number(rawBalance) / Math.pow(10, decimals);
-    return balance;
-  }
-
-  function formatNumber(n){
-    return n.toLocaleString("en-US", { maximumFractionDigits: 2 });
-  }
-
   /* ---------------- form submission ---------------- */
   const form = document.getElementById('claim-form');
   const walletInput = document.getElementById('wallet');
   const walletError = document.getElementById('wallet-error');
   const statusMsg = document.getElementById('status-msg');
   const submitBtn = document.getElementById('submit-btn');
-  const balancePanel = document.getElementById('balance-panel');
-  const balAmount = document.getElementById('bal-amount');
-  const balStatus = document.getElementById('bal-status');
 
   // Your deployed Google Apps Script Web App URL
   const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbwZxRs-sWGMvYaCMWajlosIoLwdaJB91RQPfMoUpQaLbJ7nbBTk6V57QlBMFICD4_Af/exec";
@@ -498,7 +382,6 @@
     walletError.textContent = "";
     statusMsg.textContent = "";
     statusMsg.className = "status-msg";
-    balancePanel.className = "balance-panel";
 
     const wallet = walletInput.value.trim();
     const handle = document.getElementById('handle').value.trim();
@@ -522,44 +405,12 @@
       return;
     }
 
-    // Step 1: check on-chain $RSC balance
     submitBtn.disabled = true;
-    submitBtn.textContent = t("btn_checking");
-    statusMsg.textContent = "";
-    statusMsg.className = "status-msg pending";
-
-    let balance;
-    try{
-      balance = await getRscBalance(wallet);
-    }catch(err){
-      submitBtn.disabled = false;
-      submitBtn.textContent = t("btn_submit");
-      statusMsg.textContent = t("err_rpc");
-      statusMsg.className = "status-msg err";
-      return;
-    }
-
-    const eligible = balance >= MIN_RSC_REQUIRED;
-    balAmount.textContent = formatNumber(balance) + " $RSC";
-    balStatus.textContent = eligible ? t("bal_status_eligible") : t("bal_status_ineligible");
-    balancePanel.classList.add("show");
-    balancePanel.classList.add(eligible ? "eligible" : "ineligible");
-
-    if(!eligible){
-      submitBtn.disabled = false;
-      submitBtn.textContent = t("btn_submit");
-      statusMsg.textContent = t("err_ineligible");
-      statusMsg.className = "status-msg err";
-      return;
-    }
-
-    // Step 2: eligible — submit to Google Sheet
     submitBtn.textContent = t("btn_submitting");
 
     const body = new URLSearchParams();
     body.append("wallet_address", wallet);
     body.append("twitter_handle", handle);
-    body.append("rsc_balance", String(balance));
     body.append("source", "robinmap-claim-page");
 
     try{
