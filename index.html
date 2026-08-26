@@ -301,6 +301,7 @@
       btn_submitting: "SUBMITTING...",
       err_invalid_wallet: "Enter a valid wallet address (starts with 0x, 42 characters).",
       err_not_connected: "Sheet not connected yet — add your Apps Script Web App URL.",
+      err_duplicate: "This wallet has already claimed a spot.",
       err_generic: "Something went wrong. Please try again.",
       err_network: "Network error. Please try again.",
       ok_claimed: "Spot claimed — check your wallet for updates.",
@@ -333,6 +334,7 @@
       btn_submitting: "提交中...",
       err_invalid_wallet: "请输入有效的钱包地址（以 0x 开头，共 42 位字符）。",
       err_not_connected: "表格尚未连接 —— 请添加你的 Apps Script Web App 网址。",
+      err_duplicate: "该钱包地址已领取过名额。",
       err_generic: "出现问题，请重试。",
       err_network: "网络错误，请重试。",
       ok_claimed: "名额已领取 —— 请留意你的钱包更新。",
@@ -421,6 +423,9 @@
         statusMsg.textContent = t("ok_claimed");
         statusMsg.className = "status-msg ok";
         form.reset();
+      } else if(data.result === "duplicate"){
+        statusMsg.textContent = t("err_duplicate");
+        statusMsg.className = "status-msg err";
       } else {
         statusMsg.textContent = data.message || t("err_generic");
         statusMsg.className = "status-msg err";
