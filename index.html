@@ -68,7 +68,7 @@
   .nav-links{ display:flex; gap: 28px; font-size: 13px; color: var(--ink-dim); }
   .nav-links a{ text-decoration:none; }
   .nav-links a:hover{ color: var(--green); }
-  .nav-right{ display:flex; align-items:center; gap: 12px; }
+  .nav-right{ display:flex; align-items:center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
   .nav-cta{ font-family:'Space Mono', monospace; font-size: 12px; border: 1px solid var(--green-dim); color: var(--green); padding: 8px 14px; text-decoration: none; transition: background 0.15s, color 0.15s; white-space:nowrap; }
   .nav-cta:hover{ background: var(--green); color:#06110a; }
   .lang-toggle{
@@ -268,6 +268,7 @@
         <button type="button" id="lang-en" class="active">EN</button>
         <button type="button" id="lang-zh">中文</button>
       </div>
+      <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_mint">Mint on OpenSea ↗</a>
       <a href="#claim" class="nav-cta" data-i18n="nav_cta">Claim Spot →</a>
     </div>
   </div>
@@ -395,6 +396,7 @@
     <p class="hero-sub" data-i18n="hero_sub">ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.</p>
     <div class="hero-actions">
       <a href="#claim" class="btn-primary" data-i18n="btn_claim">CLAIM YOUR SPOT</a>
+      <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="btn-ghost" data-i18n="btn_mint">MINT ON OPENSEA ↗</a>
       <a href="#about" class="btn-ghost" data-i18n="btn_howworks">HOW IT WORKS</a>
     </div>
 
@@ -475,7 +477,10 @@
 
 <footer class="container">
   <div data-i18n="footer_line">© ROBINMAP — a Robscription ecosystem project.</div>
-  <div class="mono">admin@robscription.com</div>
+  <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center;">
+    <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="mono" style="color:var(--green); text-decoration:none;" data-i18n="footer_mint">Mint on OpenSea ↗</a>
+    <div class="mono">admin@robscription.com</div>
+  </div>
 </footer>
 
 <script>
@@ -489,6 +494,9 @@
       hero_sub: "ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.",
       btn_claim: "CLAIM YOUR SPOT",
       btn_howworks: "HOW IT WORKS",
+      btn_mint: "MINT ON OPENSEA ↗",
+      nav_mint: "Mint on OpenSea ↗",
+      footer_mint: "Mint on OpenSea ↗",
       stat_supply_label: "Supply", stat_rev_label: "Revenue Share",
       stat_trait_label: "Trait Source", stat_trait_value: "Genesis Hash",
       stat_verify_label: "Verification", stat_verify_value: "Merkle Proof",
@@ -555,6 +563,9 @@
       hero_sub: "ROBINMAP 是一个 10,000 枚的生成式收藏系列，每个特征都直接来自创世区块哈希，并通过默克尔证明在链上验证。没有两个坐标是相同的。",
       btn_claim: "领取名额",
       btn_howworks: "了解机制",
+      btn_mint: "前往 OPENSEA 铸造 ↗",
+      nav_mint: "前往 OpenSea 铸造 ↗",
+      footer_mint: "前往 OpenSea 铸造 ↗",
       stat_supply_label: "供应量", stat_rev_label: "收益分成",
       stat_trait_label: "特征来源", stat_trait_value: "创世哈希",
       stat_verify_label: "验证方式", stat_verify_value: "默克尔证明",
