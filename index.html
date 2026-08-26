@@ -663,6 +663,237 @@
     box-shadow:0 7px 0 rgba(5,3,18,.46);
   }
 
+
+  /* STAKING REWARD SYSTEM — $RMAP + ROBINLAND */
+  .stake-reward-overview{
+    margin:28px 0 18px;
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+  }
+  .reward-overview-card{
+    min-height:150px;
+    padding:20px;
+    border:1px solid rgba(199,181,255,.15);
+    border-radius:18px;
+    background:
+      radial-gradient(circle at 100% 0%,rgba(155,124,255,.12),transparent 9rem),
+      linear-gradient(180deg,rgba(30,23,64,.86),rgba(17,13,41,.9));
+    box-shadow:0 7px 0 rgba(5,3,18,.46);
+  }
+  .reward-overview-kicker{
+    font-family:'Space Mono',monospace;
+    font-size:10px;
+    letter-spacing:.13em;
+    color:#8d83a6;
+  }
+  .reward-overview-value{
+    margin-top:12px;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(20px,2.1vw,28px);
+    line-height:1.15;
+    color:#fff;
+  }
+  .reward-overview-value span{ color:var(--green); font-size:.65em; }
+  .reward-overview-value.reward-small{ font-size:clamp(17px,1.65vw,22px); }
+  .reward-overview-sub{
+    margin-top:10px;
+    color:#9f96b5;
+    font-size:12px;
+    line-height:1.55;
+  }
+  .stake-earn-grid{
+    margin-top:24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .stake-earn-grid .earn-box{ margin-top:0; height:100%; }
+  .earn-helper{
+    margin-top:9px;
+    color:#8f86a3;
+    font-family:'Space Mono',monospace;
+    font-size:10px;
+    line-height:1.55;
+  }
+  .land-earn-box{
+    border-color:rgba(255,120,199,.24);
+    background:
+      radial-gradient(circle at 90% 20%,rgba(255,120,199,.12),transparent 10rem),
+      linear-gradient(135deg,rgba(155,124,255,.08),rgba(255,120,199,.06));
+  }
+  .land-reward-value{
+    margin-top:10px;
+    font-family:'Space Mono',monospace;
+    font-size:clamp(17px,2.2vw,24px);
+    font-weight:700;
+    color:#ff9bd8;
+    text-shadow:0 0 25px rgba(255,120,199,.22);
+  }
+  .stake-detail-copy p{ margin-top:10px; }
+  .stake-detail-copy ul{
+    margin:13px 0 0 18px;
+    display:grid;
+    gap:8px;
+    color:#a89fb9;
+    line-height:1.6;
+  }
+  .stake-detail-copy li::marker{ color:var(--green); }
+  .stake-stats{ grid-template-columns:repeat(3,1fr); }
+
+  .robinland-panel{
+    margin-top:28px;
+    padding:28px;
+    border:1px solid rgba(255,120,199,.18);
+    border-radius:24px;
+    background:
+      radial-gradient(circle at 5% 0%,rgba(115,247,183,.08),transparent 22rem),
+      radial-gradient(circle at 95% 12%,rgba(255,120,199,.10),transparent 22rem),
+      linear-gradient(160deg,#17102f,#0f0b25 65%,#130d2b);
+    box-shadow:var(--shadow-card);
+    overflow:hidden;
+    position:relative;
+  }
+  .robinland-panel::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background-image:
+      linear-gradient(rgba(199,181,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(199,181,255,.035) 1px,transparent 1px);
+    background-size:32px 32px;
+    mask-image:linear-gradient(to bottom,black,transparent 55%);
+  }
+  .robinland-head,.tier-grid,.tier-note{ position:relative; z-index:1; }
+  .robinland-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:24px;
+  }
+  .reward-kicker{
+    font-family:'Space Mono',monospace;
+    font-size:10px;
+    letter-spacing:.16em;
+    color:var(--green);
+    margin-bottom:8px;
+  }
+  .robinland-head h3{
+    font-size:clamp(30px,4vw,44px);
+    line-height:1;
+    letter-spacing:-.03em;
+  }
+  .robinland-head p{
+    margin-top:12px;
+    max-width:720px;
+    color:#aaa1bc;
+    line-height:1.7;
+    font-size:13px;
+  }
+  .robinland-pill{
+    flex:0 0 auto;
+    padding:9px 12px;
+    border:1px solid rgba(255,216,107,.25);
+    border-radius:999px;
+    background:rgba(255,216,107,.07);
+    color:var(--gold);
+    font-family:'Space Mono',monospace;
+    font-size:10px;
+    letter-spacing:.08em;
+  }
+  .tier-grid{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:10px;
+  }
+  .tier-card{
+    min-height:250px;
+    padding:18px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.09);
+    background:#120e2a;
+    box-shadow:0 7px 0 rgba(5,3,18,.48);
+    transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;
+  }
+  .tier-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 0 rgba(5,3,18,.5),0 18px 40px rgba(5,3,18,.28);
+  }
+  .tier-top{ display:flex; align-items:center; justify-content:space-between; }
+  .tier-number{
+    font-family:'Space Mono',monospace;
+    font-size:10px;
+    color:#716985;
+  }
+  .tier-gem{ font-size:17px; }
+  .tier-name{
+    margin-top:27px;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:-.02em;
+  }
+  .tier-tag{
+    display:inline-block;
+    margin-top:7px;
+    font-family:'Space Mono',monospace;
+    font-size:9px;
+    letter-spacing:.09em;
+    opacity:.8;
+  }
+  .tier-card p{
+    margin-top:15px;
+    font-size:11.5px;
+    line-height:1.65;
+    color:#978fa9;
+  }
+  .tier-common{ border-color:rgba(201,208,218,.18); }
+  .tier-common .tier-name,.tier-common .tier-gem,.tier-common .tier-tag{ color:#d7dce5; }
+  .tier-uncommon{ border-color:rgba(115,247,183,.22); }
+  .tier-uncommon .tier-name,.tier-uncommon .tier-gem,.tier-uncommon .tier-tag{ color:#73f7b7; }
+  .tier-rare{ border-color:rgba(104,232,255,.25); }
+  .tier-rare .tier-name,.tier-rare .tier-gem,.tier-rare .tier-tag{ color:#68e8ff; }
+  .tier-epic{ border-color:rgba(183,136,255,.27); }
+  .tier-epic .tier-name,.tier-epic .tier-gem,.tier-epic .tier-tag{ color:#c09aff; }
+  .tier-legendary{
+    border-color:rgba(255,216,107,.30);
+    background:
+      radial-gradient(circle at 85% 0%,rgba(255,216,107,.11),transparent 9rem),
+      #15102a;
+  }
+  .tier-legendary .tier-name,.tier-legendary .tier-gem,.tier-legendary .tier-tag{ color:#ffd86b; }
+  .tier-note{
+    display:flex;
+    gap:9px;
+    margin-top:18px;
+    padding:13px 15px;
+    border:1px dashed rgba(199,181,255,.14);
+    border-radius:13px;
+    color:#847b98;
+    font-family:'Space Mono',monospace;
+    font-size:9.5px;
+    line-height:1.6;
+  }
+
+  @media (max-width:980px){
+    .stake-reward-overview{ grid-template-columns:repeat(2,1fr); }
+    .tier-grid{ grid-template-columns:repeat(2,1fr); }
+    .tier-card:last-child{ grid-column:span 2; min-height:190px; }
+  }
+  @media (max-width:720px){
+    .stake-earn-grid{ grid-template-columns:1fr; }
+    .stake-stats{ grid-template-columns:1fr; }
+    .robinland-head{ flex-direction:column; }
+  }
+  @media (max-width:520px){
+    .stake-reward-overview,.tier-grid{ grid-template-columns:1fr; }
+    .tier-card:last-child{ grid-column:auto; }
+    .robinland-panel{ padding:20px; }
+    .reward-overview-card{ min-height:auto; }
+  }
+
   /* GAME PREVIEW — hero collectible frame */
   .game-frame{
     padding:8px;
@@ -878,19 +1109,43 @@
 
 <main class="container">
 
+
   <section class="section" id="stake">
     <div class="section-head">
-      <div class="section-title" data-i18n="stake_title">Stake & earn</div>
-      <div class="section-index mono">revenue share</div>
+      <div class="section-title" data-i18n="stake_title">Stake, earn & explore</div>
+      <div class="section-index mono">900M $RMAP / ROBINLAND</div>
     </div>
 
-    <p class="stake-intro" data-i18n="stake_intro">Stake your ROBINMAP directly from this page and earn a share of ecosystem revenue — paid out in USDG, the same currency the treasury collects in.</p>
+    <p class="stake-intro" data-i18n="stake_intro">Stake your ROBINMAP NFT to earn from a dedicated 900,000,000 $RMAP staking pool plus randomized ROBINLAND in-game land rewards. Your rewards are based on your eligible staking weight while your NFT remains staked.</p>
+
+    <div class="stake-reward-overview">
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-i18n="pool_label">TOTAL STAKING POOL</div>
+        <div class="reward-overview-value">900,000,000 <span>$RMAP</span></div>
+        <div class="reward-overview-sub" data-i18n="pool_sub">Reserved for the ROBINMAP staking program</div>
+      </div>
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-i18n="reward_type_label">DUAL REWARDS</div>
+        <div class="reward-overview-value reward-small">$RMAP + ROBINLAND</div>
+        <div class="reward-overview-sub" data-i18n="reward_type_sub">Token emissions plus in-game land drops</div>
+      </div>
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-i18n="epoch_label">REWARD EPOCH</div>
+        <div class="reward-overview-value reward-small">8 <span data-i18n="hours_label">HOURS</span></div>
+        <div class="reward-overview-sub" data-i18n="epoch_sub">Rewards are calculated every distribution cycle</div>
+      </div>
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-i18n="land_tiers_label">ROBINLAND</div>
+        <div class="reward-overview-value reward-small">5 <span data-i18n="tiers_label">TIERS</span></div>
+        <div class="reward-overview-sub" data-i18n="land_tiers_sub">Common through Legendary rarity</div>
+      </div>
+    </div>
 
     <div class="stake-wrap">
       <div class="stake-tabs">
         <div class="stake-tab">
           <div class="stake-tab-title" data-i18n="stake_tab_title">Stake ROBINMAP</div>
-          <div class="stake-tab-sub" data-i18n="stake_tab_sub">Earn USDG from revenue share</div>
+          <div class="stake-tab-sub" data-i18n="stake_tab_sub">Earn $RMAP + randomized ROBINLAND drops</div>
         </div>
       </div>
 
@@ -902,9 +1157,17 @@
         </div>
         <div class="balance-line"><span data-i18n="balance_label">Balance</span>: 0 ROBINMAP</div>
 
-        <div class="earn-box">
-          <div class="earn-label" data-i18n="you_earn_label">You earn</div>
-          <div class="earn-value">+0.00 USDG <span class="unit" data-i18n="per_day">/ day</span></div>
+        <div class="stake-earn-grid">
+          <div class="earn-box">
+            <div class="earn-label" data-i18n="rmap_reward_label">$RMAP reward</div>
+            <div class="earn-value">+0.00 $RMAP <span class="unit" data-i18n="per_day">/ day</span></div>
+            <div class="earn-helper" data-i18n="rmap_reward_helper">Estimated token emission while staked</div>
+          </div>
+          <div class="earn-box land-earn-box">
+            <div class="earn-label" data-i18n="land_reward_label">ROBINLAND reward</div>
+            <div class="land-reward-value" data-i18n="land_reward_value">ELIGIBLE FOR DROP</div>
+            <div class="earn-helper" data-i18n="land_reward_helper">Rarity is determined when an eligible land reward is distributed</div>
+          </div>
         </div>
 
         <div class="stake-actions">
@@ -913,11 +1176,19 @@
           <span class="game-badge" data-i18n="stake_badge">Coming Soon</span>
         </div>
 
-        <p class="stake-note" data-i18n="stake_note">Unstake anytime, no lockup. Staking opens once ROBINMAP has minted.</p>
+        <p class="stake-note" data-i18n="stake_note">Unstake anytime with no lockup. $RMAP accrues only while your ROBINMAP is eligible and staked; ROBINLAND drops are distributed separately through staking reward epochs.</p>
 
         <details class="stake-details">
-          <summary data-i18n="stake_details_summary">How the rate is set, and why it can change</summary>
-          <p data-i18n="stake_details_body">Your daily rate is a share of live ecosystem revenue — mint proceeds, secondary royalties, and Robscription protocol fees — split across all staked ROBINMAP. As total staked supply or revenue changes, the rate moves with it.</p>
+          <summary data-i18n="stake_details_summary">How ROBINMAP staking rewards work</summary>
+          <div class="stake-detail-copy">
+            <p data-i18n="stake_details_body">A total pool of 900,000,000 $RMAP is allocated to staking rewards. Each reward epoch distributes $RMAP according to eligible staking weight, so your share depends on how much eligible ROBINMAP you have staked and how long it remains staked during the epoch.</p>
+            <ul>
+              <li data-i18n="stake_rule_1">The 900M $RMAP pool is dedicated to staking emissions.</li>
+              <li data-i18n="stake_rule_2">ROBINLAND is a separate in-game reward and does not reduce your $RMAP allocation.</li>
+              <li data-i18n="stake_rule_3">ROBINLAND rarity is assigned from five tiers: Common, Uncommon, Rare, Epic, and Legendary.</li>
+              <li data-i18n="stake_rule_4">Final land drop odds and game-balance parameters will be published before staking goes live.</li>
+            </ul>
+          </div>
         </details>
       </div>
     </div>
@@ -926,17 +1197,85 @@
       <div class="stake-stat">
         <div class="stake-stat-label" data-i18n="stat_staked_label">Staked</div>
         <div class="stake-stat-value">0 ROBINMAP</div>
-        <div class="stake-stat-sub">≈ 0.00 USDG</div>
+        <div class="stake-stat-sub" data-i18n="stat_staked_sub">Your active staking position</div>
       </div>
       <div class="stake-stat">
-        <div class="stake-stat-label" data-i18n="stat_next_label">Next distribution</div>
-        <div class="stake-stat-value">— USDG</div>
-        <div class="stake-stat-sub" data-i18n="stat_next_sub">Distributed every 8 hours</div>
+        <div class="stake-stat-label" data-i18n="stat_next_label">Next reward epoch</div>
+        <div class="stake-stat-value">— $RMAP</div>
+        <div class="stake-stat-sub" data-i18n="stat_next_sub">Calculated every 8 hours</div>
       </div>
       <div class="stake-stat">
         <div class="stake-stat-label" data-i18n="stat_earned_label">Earned to date</div>
-        <div class="stake-stat-value">0.00 USDG</div>
-        <div class="stake-stat-sub" data-i18n="stat_earned_sub">Lifetime revenue share</div>
+        <div class="stake-stat-value">0.00 $RMAP</div>
+        <div class="stake-stat-sub"><span data-i18n="stat_earned_sub">Lifetime staking rewards</span> · <span>0 ROBINLAND</span></div>
+      </div>
+    </div>
+
+    <div class="robinland-panel">
+      <div class="robinland-head">
+        <div>
+          <div class="reward-kicker" data-i18n="robinland_kicker">IN-GAME STAKING REWARD</div>
+          <h3>ROBINLAND</h3>
+          <p data-i18n="robinland_intro">ROBINLAND is a collectible in-game land reward for eligible ROBINMAP stakers. Each drop is assigned a rarity tier that represents scarcity, visual identity, and potential utility inside the ROBINMAP world.</p>
+        </div>
+        <div class="robinland-pill" data-i18n="robinland_pill">5 RARITY TIERS</div>
+      </div>
+
+      <div class="tier-grid">
+        <article class="tier-card tier-common">
+          <div class="tier-top">
+            <div class="tier-number">01</div>
+            <div class="tier-gem">◆</div>
+          </div>
+          <div class="tier-name" data-i18n="tier_common">Common</div>
+          <div class="tier-tag" data-i18n="tier_common_tag">STARTER LAND</div>
+          <p data-i18n="tier_common_desc">Core ROBINLAND plots with standard resource nodes, basic gathering access, and foundational game utility.</p>
+        </article>
+
+        <article class="tier-card tier-uncommon">
+          <div class="tier-top">
+            <div class="tier-number">02</div>
+            <div class="tier-gem">◆</div>
+          </div>
+          <div class="tier-name" data-i18n="tier_uncommon">Uncommon</div>
+          <div class="tier-tag" data-i18n="tier_uncommon_tag">UPGRADED LAND</div>
+          <p data-i18n="tier_uncommon_desc">Improved plots with broader resource variety and better access to crafting materials and exploration opportunities.</p>
+        </article>
+
+        <article class="tier-card tier-rare">
+          <div class="tier-top">
+            <div class="tier-number">03</div>
+            <div class="tier-gem">◆</div>
+          </div>
+          <div class="tier-name" data-i18n="tier_rare">Rare</div>
+          <div class="tier-tag" data-i18n="tier_rare_tag">ADVANCED LAND</div>
+          <p data-i18n="tier_rare_desc">Advanced territories with rarer materials, stronger production potential, and additional quest or world utility.</p>
+        </article>
+
+        <article class="tier-card tier-epic">
+          <div class="tier-top">
+            <div class="tier-number">04</div>
+            <div class="tier-gem">◆</div>
+          </div>
+          <div class="tier-name" data-i18n="tier_epic">Epic</div>
+          <div class="tier-tag" data-i18n="tier_epic_tag">PREMIUM LAND</div>
+          <p data-i18n="tier_epic_desc">Premium regions featuring high-grade resources, distinctive visuals, and stronger utility across advanced game systems.</p>
+        </article>
+
+        <article class="tier-card tier-legendary">
+          <div class="tier-top">
+            <div class="tier-number">05</div>
+            <div class="tier-gem">✦</div>
+          </div>
+          <div class="tier-name" data-i18n="tier_legendary">Legendary</div>
+          <div class="tier-tag" data-i18n="tier_legendary_tag">MYTHIC LAND</div>
+          <p data-i18n="tier_legendary_desc">The scarcest ROBINLAND tier, designed for unique landmarks, top-tier resource potential, exclusive visuals, and special game experiences.</p>
+        </article>
+      </div>
+
+      <div class="tier-note">
+        <span>※</span>
+        <span data-i18n="tier_note">Rarity tiers describe the intended reward hierarchy. Exact drop odds, supply, and final in-game effects can be tuned before launch for sustainable game balance.</span>
       </div>
     </div>
   </section>
@@ -1135,25 +1474,65 @@
       feat_guild_title: "Guilds & Quests",
       feat_guild_desc: "Form guilds with other holders, take on quests, and climb a shared leaderboard.",
       nav_stake: "Stake",
-      stake_title: "Stake & earn",
-      stake_intro: "Stake your ROBINMAP directly from this page and earn a share of ecosystem revenue — paid out in USDG, the same currency the treasury collects in.",
+      stake_title: "Stake, earn & explore",
+      stake_intro: "Stake your ROBINMAP NFT to earn from a dedicated 900,000,000 $RMAP staking pool plus randomized ROBINLAND in-game land rewards. Your rewards are based on your eligible staking weight while your NFT remains staked.",
       stake_badge: "Coming Soon",
       stake_tab_title: "Stake ROBINMAP",
-      stake_tab_sub: "Earn USDG from revenue share",
+      stake_tab_sub: "Earn $RMAP + randomized ROBINLAND drops",
       amount_label: "Amount",
       balance_label: "Balance",
       you_earn_label: "You earn",
       per_day: "/ day",
       btn_max: "Max",
       btn_stake: "Stake ROBINMAP",
-      stake_note: "Unstake anytime, no lockup. Staking opens once ROBINMAP has minted.",
-      stake_details_summary: "How the rate is set, and why it can change",
-      stake_details_body: "Your daily rate is a share of live ecosystem revenue — mint proceeds, secondary royalties, and Robscription protocol fees — split across all staked ROBINMAP. As total staked supply or revenue changes, the rate moves with it.",
+      stake_note: "Unstake anytime with no lockup. $RMAP accrues only while your ROBINMAP is eligible and staked; ROBINLAND drops are distributed separately through staking reward epochs.",
+      stake_details_summary: "How ROBINMAP staking rewards work",
+      stake_details_body: "A total pool of 900,000,000 $RMAP is allocated to staking rewards. Each reward epoch distributes $RMAP according to eligible staking weight, so your share depends on how much eligible ROBINMAP you have staked and how long it remains staked during the epoch.",
       stat_staked_label: "Staked",
-      stat_next_label: "Next distribution",
-      stat_next_sub: "Distributed every 8 hours",
+      stat_next_label: "Next reward epoch",
+      stat_next_sub: "Calculated every 8 hours",
       stat_earned_label: "Earned to date",
-      stat_earned_sub: "Lifetime revenue share",
+      stat_earned_sub: "Lifetime staking rewards",
+
+      stat_staked_sub: "Your active staking position",
+      pool_label: "TOTAL STAKING POOL",
+      pool_sub: "Reserved for the ROBINMAP staking program",
+      reward_type_label: "DUAL REWARDS",
+      reward_type_sub: "Token emissions plus in-game land drops",
+      epoch_label: "REWARD EPOCH",
+      hours_label: "HOURS",
+      epoch_sub: "Rewards are calculated every distribution cycle",
+      land_tiers_label: "ROBINLAND",
+      tiers_label: "TIERS",
+      land_tiers_sub: "Common through Legendary rarity",
+      rmap_reward_label: "$RMAP reward",
+      rmap_reward_helper: "Estimated token emission while staked",
+      land_reward_label: "ROBINLAND reward",
+      land_reward_value: "ELIGIBLE FOR DROP",
+      land_reward_helper: "Rarity is determined when an eligible land reward is distributed",
+      stake_rule_1: "The 900M $RMAP pool is dedicated to staking emissions.",
+      stake_rule_2: "ROBINLAND is a separate in-game reward and does not reduce your $RMAP allocation.",
+      stake_rule_3: "ROBINLAND rarity is assigned from five tiers: Common, Uncommon, Rare, Epic, and Legendary.",
+      stake_rule_4: "Final land drop odds and game-balance parameters will be published before staking goes live.",
+      robinland_kicker: "IN-GAME STAKING REWARD",
+      robinland_intro: "ROBINLAND is a collectible in-game land reward for eligible ROBINMAP stakers. Each drop is assigned a rarity tier that represents scarcity, visual identity, and potential utility inside the ROBINMAP world.",
+      robinland_pill: "5 RARITY TIERS",
+      tier_common: "Common",
+      tier_common_tag: "STARTER LAND",
+      tier_common_desc: "Core ROBINLAND plots with standard resource nodes, basic gathering access, and foundational game utility.",
+      tier_uncommon: "Uncommon",
+      tier_uncommon_tag: "UPGRADED LAND",
+      tier_uncommon_desc: "Improved plots with broader resource variety and better access to crafting materials and exploration opportunities.",
+      tier_rare: "Rare",
+      tier_rare_tag: "ADVANCED LAND",
+      tier_rare_desc: "Advanced territories with rarer materials, stronger production potential, and additional quest or world utility.",
+      tier_epic: "Epic",
+      tier_epic_tag: "PREMIUM LAND",
+      tier_epic_desc: "Premium regions featuring high-grade resources, distinctive visuals, and stronger utility across advanced game systems.",
+      tier_legendary: "Legendary",
+      tier_legendary_tag: "MYTHIC LAND",
+      tier_legendary_desc: "The scarcest ROBINLAND tier, designed for unique landmarks, top-tier resource potential, exclusive visuals, and special game experiences.",
+      tier_note: "Rarity tiers describe the intended reward hierarchy. Exact drop odds, supply, and final in-game effects can be tuned before launch for sustainable game balance.",
       claim_title: "Claim your spot",
       claim_h3: "Reserve a coordinate.",
       claim_p: "Paste the wallet address you'll use to mint. This does not connect a wallet and does not cost anything — it registers your address on the pre-claim list before public mint opens.",
@@ -1209,25 +1588,65 @@
       feat_guild_title: "公会与任务",
       feat_guild_desc: "与其他持有者组建公会，接取任务，并在共同排行榜上争夺名次。",
       nav_stake: "质押",
-      stake_title: "质押赚取收益",
-      stake_intro: "直接在本页质押你的 ROBINMAP，即可赚取生态系统收益分成 —— 以 USDG 形式发放，与国库收取的币种一致。",
+      stake_title: "质押、赚取并探索",
+      stake_intro: "质押你的 ROBINMAP NFT，即可从专属的 900,000,000 $RMAP 质押奖励池中赚取代币奖励，并有机会获得随机 ROBINLAND 游戏内土地奖励。奖励份额取决于 NFT 处于有效质押状态时的质押权重。",
       stake_badge: "即将推出",
       stake_tab_title: "质押 ROBINMAP",
-      stake_tab_sub: "从收益分成中赚取 USDG",
+      stake_tab_sub: "赚取 $RMAP + 随机 ROBINLAND 掉落",
       amount_label: "数量",
       balance_label: "余额",
       you_earn_label: "预计收益",
       per_day: "/ 天",
       btn_max: "最大",
       btn_stake: "质押 ROBINMAP",
-      stake_note: "随时可解除质押，无锁仓期。质押功能将在 ROBINMAP 铸造完成后开放。",
-      stake_details_summary: "收益率如何计算，以及为何会变动",
-      stake_details_body: "你的每日收益率来自实时生态系统收入的分成 —— 包括铸造收入、二级市场版税，以及 Robscription 协议手续费 —— 按全部已质押的 ROBINMAP 进行分配。当总质押量或收入发生变化时，收益率也会随之调整。",
+      stake_note: "可随时解除质押，无锁仓期。只有在 ROBINMAP 处于有效质押状态时才会累积 $RMAP；ROBINLAND 将通过独立的质押奖励周期进行发放。",
+      stake_details_summary: "ROBINMAP 质押奖励如何运作",
+      stake_details_body: "质押奖励总池为 900,000,000 $RMAP。每个奖励周期会按照有效质押权重分配 $RMAP，因此你的奖励份额取决于有效质押的 ROBINMAP 数量以及在该周期内的质押时长。",
       stat_staked_label: "已质押",
-      stat_next_label: "下次分配",
-      stat_next_sub: "每 8 小时分配一次",
+      stat_next_label: "下个奖励周期",
+      stat_next_sub: "每 8 小时计算一次",
       stat_earned_label: "累计收益",
-      stat_earned_sub: "累计收益分成",
+      stat_earned_sub: "累计质押奖励",
+
+      stat_staked_sub: "你的当前有效质押仓位",
+      pool_label: "质押奖励总池",
+      pool_sub: "专用于 ROBINMAP 质押奖励计划",
+      reward_type_label: "双重奖励",
+      reward_type_sub: "代币释放 + 游戏内土地掉落",
+      epoch_label: "奖励周期",
+      hours_label: "小时",
+      epoch_sub: "每个分配周期计算一次奖励",
+      land_tiers_label: "ROBINLAND",
+      tiers_label: "等级",
+      land_tiers_sub: "从 Common 到 Legendary 五种稀有度",
+      rmap_reward_label: "$RMAP 奖励",
+      rmap_reward_helper: "质押期间的预计代币释放",
+      land_reward_label: "ROBINLAND 奖励",
+      land_reward_value: "具备掉落资格",
+      land_reward_helper: "获得土地奖励时将确定其稀有度",
+      stake_rule_1: "900M $RMAP 奖励池专用于质押代币释放。",
+      stake_rule_2: "ROBINLAND 为独立的游戏内奖励，不会减少你的 $RMAP 分配。",
+      stake_rule_3: "ROBINLAND 分为五个稀有度：Common、Uncommon、Rare、Epic 和 Legendary。",
+      stake_rule_4: "最终土地掉落概率与游戏平衡参数将在质押正式上线前公布。",
+      robinland_kicker: "游戏内质押奖励",
+      robinland_intro: "ROBINLAND 是面向符合资格的 ROBINMAP 质押者发放的可收藏游戏内土地奖励。每次掉落都会被赋予一个稀有度等级，用于体现其稀缺性、视觉身份以及在 ROBINMAP 世界中的潜在用途。",
+      robinland_pill: "5 个稀有度等级",
+      tier_common: "Common",
+      tier_common_tag: "入门土地",
+      tier_common_desc: "基础 ROBINLAND 地块，拥有标准资源节点、基础采集入口和核心游戏功能。",
+      tier_uncommon: "Uncommon",
+      tier_uncommon_tag: "升级土地",
+      tier_uncommon_desc: "升级地块，提供更丰富的资源类型，并改善合成材料与探索机会。",
+      tier_rare: "Rare",
+      tier_rare_tag: "高级土地",
+      tier_rare_desc: "高级区域，可产出更稀有的材料，拥有更强的生产潜力以及额外任务或世界功能。",
+      tier_epic: "Epic",
+      tier_epic_tag: "精品土地",
+      tier_epic_desc: "精品区域，拥有高等级资源、独特视觉表现，并可在高级游戏系统中提供更强功能。",
+      tier_legendary: "Legendary",
+      tier_legendary_tag: "神话土地",
+      tier_legendary_desc: "最稀有的 ROBINLAND 等级，面向独特地标、顶级资源潜力、专属视觉效果以及特殊游戏体验。",
+      tier_note: "稀有度等级用于展示预期奖励层级。具体掉落概率、供应量和最终游戏效果可在上线前根据可持续的游戏平衡进行调整。",
       claim_title: "领取你的名额",
       claim_h3: "预留一个坐标。",
       claim_p: "粘贴你将用于铸造的钱包地址。此过程不需要连接钱包，也不产生任何费用——你的地址将被登记在公开铸造开始前的预领取名单中。",
