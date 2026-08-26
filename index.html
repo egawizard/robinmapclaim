@@ -143,6 +143,13 @@
   .claim-left .badge-row{ margin-top: 24px; display:flex; flex-wrap: wrap; gap: 8px; }
   .badge{ font-family:'Space Mono', monospace; font-size: 11px; color: var(--ink-dim); border: 1px solid var(--grid-line); padding: 6px 10px; }
 
+  .rt-block{ margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--grid-line); }
+  .rt-block-label{ font-family:'Space Mono', monospace; font-size: 11px; color: var(--green); text-transform: uppercase; letter-spacing: 0.1em; }
+  .rt-block-title{ margin-top: 6px; font-size: 15px; font-weight: 700; color: var(--ink); }
+  .rt-btn{ margin-top: 14px; display:inline-block; padding: 12px 20px; font-size: 12px; }
+  .rt-checkbox-row{ display:flex; align-items:center; gap: 10px; font-family:'Space Mono', monospace; font-size: 12.5px; color: var(--ink-dim); cursor: pointer; }
+  .rt-checkbox-row input[type="checkbox"]{ width: 16px; height: 16px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
+
   form{ display:flex; flex-direction: column; gap: 16px; }
   label{ font-family:'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); display:block; margin-bottom: 8px; }
   input[type="text"], input[type="email"]{
@@ -441,6 +448,13 @@
         <div class="claim-left">
           <h3 data-i18n="claim_h3">Reserve a coordinate.</h3>
           <p data-i18n="claim_p">Paste the wallet address you'll use to mint. This does not connect a wallet and does not cost anything — it registers your address on the pre-claim list before public mint opens.</p>
+
+          <div class="rt-block">
+            <div class="rt-block-label" data-i18n="rt_step_label">Step 1</div>
+            <div class="rt-block-title" data-i18n="rt_step_title">Retweet to unlock claim</div>
+            <a href="https://x.com/robinhood_rsc20/status/2092501460592574898?s=20" target="_blank" rel="noopener" class="btn-ghost rt-btn" data-i18n="rt_open_btn">OPEN TWEET & RETWEET ↗</a>
+          </div>
+
           <div class="badge-row">
             <span class="badge" data-i18n="badge_nowallet">No wallet connection</span>
             <span class="badge" data-i18n="badge_nopay">No payment</span>
@@ -461,6 +475,14 @@
             <div>
               <label for="handle" data-i18n="label_handle">X / Twitter handle (optional)</label>
               <input type="text" id="handle" name="twitter_handle" placeholder="@yourhandle">
+            </div>
+
+            <div>
+              <label class="rt-checkbox-row" for="rt-confirm">
+                <input type="checkbox" id="rt-confirm">
+                <span data-i18n="rt_checkbox">I've retweeted this post</span>
+              </label>
+              <div class="field-error" id="rt-error"></div>
             </div>
 
             <div class="submit-row">
@@ -548,6 +570,11 @@
       btn_submit: "CLAIM MY SPOT",
       btn_submitting: "SUBMITTING...",
       err_invalid_wallet: "Enter a valid wallet address (starts with 0x, 42 characters).",
+      rt_step_label: "Step 1",
+      rt_step_title: "Retweet to unlock claim",
+      rt_open_btn: "OPEN TWEET & RETWEET ↗",
+      rt_checkbox: "I've retweeted this post",
+      err_rt_required: "Please retweet the post and confirm the checkbox before claiming.",
       err_not_connected: "Sheet not connected yet — add your Apps Script Web App URL.",
       err_duplicate: "This wallet has already claimed a spot.",
       err_generic: "Something went wrong. Please try again.",
@@ -617,6 +644,11 @@
       btn_submit: "立即领取",
       btn_submitting: "提交中...",
       err_invalid_wallet: "请输入有效的钱包地址（以 0x 开头，共 42 位字符）。",
+      rt_step_label: "第一步",
+      rt_step_title: "转发推文以解锁领取",
+      rt_open_btn: "打开推文并转发 ↗",
+      rt_checkbox: "我已转发该推文",
+      err_rt_required: "请先转发该推文并勾选确认框，才能领取名额。",
       err_not_connected: "表格尚未连接 —— 请添加你的 Apps Script Web App 网址。",
       err_duplicate: "该钱包地址已领取过名额。",
       err_generic: "出现问题，请重试。",
@@ -651,6 +683,8 @@
   const form = document.getElementById('claim-form');
   const walletInput = document.getElementById('wallet');
   const walletError = document.getElementById('wallet-error');
+  const rtConfirm = document.getElementById('rt-confirm');
+  const rtError = document.getElementById('rt-error');
   const statusMsg = document.getElementById('status-msg');
   const submitBtn = document.getElementById('submit-btn');
 
@@ -666,6 +700,7 @@
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     walletError.textContent = "";
+    rtError.textContent = "";
     statusMsg.textContent = "";
     statusMsg.className = "status-msg";
 
@@ -675,6 +710,11 @@
 
     if(!isValidAddress(wallet)){
       walletError.textContent = t("err_invalid_wallet");
+      return;
+    }
+
+    if(!rtConfirm.checked){
+      rtError.textContent = t("err_rt_required");
       return;
     }
 
@@ -697,6 +737,7 @@
     const body = new URLSearchParams();
     body.append("wallet_address", wallet);
     body.append("twitter_handle", handle);
+    body.append("retweet_confirmed", "yes");
     body.append("source", "robinmap-claim-page");
 
     try{
@@ -707,6 +748,7 @@
         statusMsg.textContent = t("ok_claimed");
         statusMsg.className = "status-msg ok";
         form.reset();
+        rtConfirm.checked = false;
       } else if(data.result === "duplicate"){
         statusMsg.textContent = t("err_duplicate");
         statusMsg.className = "status-msg err";
