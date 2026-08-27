@@ -2177,6 +2177,8 @@
 </script>
 
 
+<!-- ethers.js is required by the live staking dApp -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.14.4/ethers.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 (() => {
   const CHAIN_ID = 4663;
@@ -2320,6 +2322,7 @@
   async function connectWallet(){
     try{
       if(!window.ethereum){ status('No EVM wallet detected. Install MetaMask, Rabby or another browser wallet.', 'err'); return; }
+      if(!window.ethers){ status('Staking library failed to load. Hard refresh the page and try again.', 'err'); return; }
       await switchToRobinhood();
       walletProvider = new ethers.BrowserProvider(window.ethereum);
       await walletProvider.send('eth_requestAccounts',[]);
@@ -2452,7 +2455,15 @@
   async function stakeSelected(){if(!selectedOwned.size){status(tr('selectStake'),'err');return;}try{status(tr('staking'));const ids=[...selectedOwned].map(BigInt);const tx=await writeStaking.stake(ids);await tx.wait();selectedOwned.clear();status(tr('stakedOk'),'ok');await refreshAll(true);}catch(e){handleError(e);}}
   async function claim(){try{status(tr('claiming'));const tx=await writeStaking.claim();await tx.wait();status(tr('claimedOk'),'ok');await refreshAll(false);}catch(e){handleError(e);}}
   async function unstake(withClaim=false){if(!selectedStaked.size){status(tr('selectUnstake'),'err');return;}try{status(tr(withClaim?'claimUnstaking':'unstaking'));const ids=[...selectedStaked].map(BigInt);const tx=withClaim?await writeStaking.claimAndUnstake(ids):await writeStaking.unstake(ids);await tx.wait();selectedStaked.clear();status(tr(withClaim?'claimUnstakedOk':'unstakedOk'),'ok');await refreshAll(true);}catch(e){handleError(e);}}
-  function handleError(e){console.error(e);const code=e?.code||e?.info?.error?.code; if(code===4001||code==='ACTION_REJECTED')status(tr('txRejected'),'err'); else if(String(e?.message||'').toLowerCase().includes('chain'))status(tr('wrongNetwork'),'err'); else status(tr('genericError'),'err');}
+  function handleError(e){
+    console.error('ROBINMAP staking error:',e);
+    const code=e?.code||e?.info?.error?.code;
+    const msg=String(e?.shortMessage||e?.reason||e?.message||'');
+    if(code===4001||code==='ACTION_REJECTED') status(tr('txRejected'),'err');
+    else if(msg.toLowerCase().includes('chain')) status(tr('wrongNetwork'),'err');
+    else if(msg.toLowerCase().includes('user rejected')) status(tr('txRejected'),'err');
+    else status(msg ? `Transaction failed: ${msg.slice(0,180)}` : tr('genericError'),'err');
+  }
 
   function bind(){
     $('stake-connect-btn').addEventListener('click',connectWallet); $('stake-approve-btn').addEventListener('click',approve); $('stake-selected-btn').addEventListener('click',stakeSelected); $('stake-claim-btn').addEventListener('click',claim); $('stake-unstake-btn').addEventListener('click',()=>unstake(false)); $('stake-claim-unstake-btn').addEventListener('click',()=>unstake(true));
