@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ROBINMAP — Minting Event · 16:00 UTC</title>
+<title>ROBINMAP — Staking Opens August 30</title>
 <link rel="icon" href="./favicon.ico?v=4" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png?v=4">
 <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png?v=4">
@@ -1296,6 +1296,16 @@
 
 
   /* LIVE STAKING DAPP */
+  .launch-announcement{position:relative;overflow:hidden;margin:18px 0 24px;padding:20px 22px;border:1px solid rgba(115,247,183,.32);border-radius:18px;background:linear-gradient(135deg,rgba(115,247,183,.12),rgba(151,113,255,.10) 55%,rgba(255,86,177,.07));box-shadow:0 14px 38px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);}
+  .launch-announcement:after{content:'AUG 30';position:absolute;right:-8px;top:-14px;font:900 58px/1 monospace;color:rgba(115,247,183,.055);letter-spacing:-4px;pointer-events:none;}
+  .launch-announcement-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
+  .launch-announcement-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:#73f7b7;color:#08130f;font:900 11px/1 monospace;letter-spacing:.07em;}
+  .launch-announcement-date{font:900 20px/1.1 monospace;color:#fff;letter-spacing:.02em;}
+  .launch-announcement p{position:relative;z-index:1;margin:0;max-width:820px;color:#d7d0e4;line-height:1.65;font-size:14px;}
+  .launch-announcement strong{color:#73f7b7;}
+  .site-announcement{margin:0 0 26px;padding:12px 16px;border:1px solid rgba(115,247,183,.22);border-radius:14px;background:rgba(115,247,183,.055);display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;font:800 12px/1.45 monospace;letter-spacing:.045em;color:#e9fff4;}
+  .site-announcement a{color:#73f7b7;text-decoration:none;}
+  .site-announcement a:hover{text-decoration:underline;}
   .stake-contract-strip{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 4px;padding:13px 15px;border:1px solid rgba(115,247,183,.18);border-radius:14px;background:rgba(115,247,183,.045);}
   .stake-contract-status{display:flex;align-items:center;gap:9px;font-family:'Space Mono',monospace;font-size:11px;color:#d8d2e7;}
   .live-dot{width:9px;height:9px;border-radius:50%;background:#777;box-shadow:0 0 10px rgba(255,255,255,.12);}
@@ -1371,29 +1381,43 @@
       <a href="#game" data-i18n="nav_game">Game</a>
       <a href="#stake" data-i18n="nav_stake">Stake</a>
       <a href="#utility" data-i18n="nav_utility">Utility</a>
-      <a href="#claim" data-i18n="nav_claim">Mint Event</a>
+      <a href="#claim" data-i18n="nav_claim">Reveal</a>
     </div>
     <div class="nav-right">
       <div class="lang-toggle">
         <button type="button" id="lang-en" class="active">EN</button>
         <button type="button" id="lang-zh">中文</button>
       </div>
-      <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_mint">Mint on OpenSea ↗</a>
-      <a href="#claim" class="nav-cta" data-i18n="nav_cta">MINT · 16:00 UTC →</a>
+      <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_mint">View on OpenSea ↗</a>
+      <a href="#stake" class="nav-cta" data-i18n="nav_cta">STAKING · AUG 30 →</a>
     </div>
   </div>
 </nav>
 
 <main class="container">
 
+  <div class="site-announcement">
+    <span>⚡</span>
+    <span data-i18n="staking_announcement_bar">ROBINMAP STAKING OPENS AUGUST 30 · 900M $RMAP REWARD POOL</span>
+    <a href="#stake" data-i18n="staking_announcement_link">VIEW STAKING →</a>
+  </div>
+
 
   <section class="section" id="stake">
     <div class="section-head">
       <div class="section-title" data-stake-i18n="title">Stake ROBINMAP. Earn $RMAP.</div>
-      <div class="section-index mono" id="stake-live-index">ROBINHOOD CHAIN · LIVE CONTRACT</div>
+      <div class="section-index mono" id="stake-live-index">ROBINHOOD CHAIN · STAKING AUG 30</div>
     </div>
 
     <p class="stake-intro" data-stake-i18n="intro">Stake your ROBINMAP NFTs and earn a proportional share of 7,000,000 $RMAP every 8 hours of active staking time. Rewards accrue continuously based on how many NFTs you stake and how long they remain staked.</p>
+
+    <div class="launch-announcement">
+      <div class="launch-announcement-top">
+        <span class="launch-announcement-badge" data-stake-i18n="launchBadge">NEXT CHAPTER</span>
+        <span class="launch-announcement-date" data-stake-i18n="launchDate">STAKING GOES LIVE · AUGUST 30</span>
+      </div>
+      <p data-stake-i18n="launchBody">Get your ROBINMAP ready. Staking officially opens August 30. Stake your Genesis coordinates to earn $RMAP based on your active staking time. <strong>900M $RMAP</strong> is reserved for the staking reward pool.</p>
+    </div>
 
     <div class="stake-contract-strip">
       <div class="stake-contract-status">
@@ -1670,7 +1694,7 @@
     <h1><span data-i18n="hero_line1">Every piece is drawn</span><br><span class="accent" data-i18n="hero_line2">from a single block hash.</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.</p>
     <div class="hero-actions">
-      <a href="#claim" class="btn-primary" data-i18n="btn_claim">MINTING · 16:00 UTC</a>
+      <a href="#stake" class="btn-primary" data-i18n="btn_claim">STAKING · AUG 30</a>
       <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="btn-ghost" data-i18n="btn_mint">MINT ON OPENSEA ↗</a>
       <a href="#about" class="btn-ghost" data-i18n="btn_howworks">HOW IT WORKS</a>
     </div>
@@ -1699,14 +1723,14 @@
         <div class="row"><span>trait_source</span><span>genesis_block_hash</span></div>
         <div class="row"><span>proof_type</span><span>merkle</span></div>
         <div class="row"><span>holder_revenue_share</span><span>70%</span></div>
-        <div class="row"><span>status</span><span data-i18n="coord_status">claim closed · minting 16:00 UTC</span></div>
+        <div class="row"><span>status</span><span data-i18n="coord_status">sold out · reveal in progress</span></div>
       </div>
     </div>
   </section>
 
   <section class="section" id="utility">
     <div class="section-head">
-      <div class="section-title" id="claim" data-i18n="claim_title">Spot claim closed</div>
+      <div class="section-title" id="claim" data-i18n="claim_title">Mint sold out</div>
       <div class="section-index mono">02 / 02</div>
     </div>
 
@@ -1715,18 +1739,18 @@
       <div class="claim-inner">
         <div class="claim-left">
           <h3 data-i18n="claim_h3">Pre-claim is officially closed.</h3>
-          <p data-i18n="claim_p">Thank you to everyone who registered. The ROBINMAP spot claim window has ended — see you at the minting event at 16:00 UTC.</p>
+          <p data-i18n="claim_p">All 4,444 ROBINMAP Genesis coordinates have been minted. Reveal is in progress, and staking officially opens August 30.</p>
 
           <div class="rt-block">
             <div class="rt-block-label" data-i18n="rt_step_label">NEXT STEP</div>
-            <div class="rt-block-title" data-i18n="rt_step_title">Minting Event · 16:00 UTC</div>
+            <div class="rt-block-title" data-i18n="rt_step_title">Staking Opens · August 30</div>
             <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="btn-ghost rt-btn" data-i18n="rt_open_btn">ROBINMAP ON OPENSEA ↗</a>
           </div>
 
           <div class="badge-row">
             <span class="badge" data-i18n="badge_nowallet">PRE-CLAIM CLOSED</span>
-            <span class="badge" data-i18n="badge_nopay">MINTING · 16:00 UTC</span>
-            <span class="badge" data-i18n="badge_oneentry">SEE YOU AT MINT</span>
+            <span class="badge" data-i18n="badge_nopay">SOLD OUT · 4,444</span>
+            <span class="badge" data-i18n="badge_oneentry">REVEAL IN PROGRESS</span>
           </div>
         </div>
 
@@ -1734,14 +1758,14 @@
           <div class="claim-closed-card">
             <div class="closed-kicker" data-i18n="closed_kicker">PRE-CLAIM STATUS</div>
             <div class="closed-icon">✓</div>
-            <h4 data-i18n="closed_title">SPOT CLAIM CLOSED</h4>
+            <h4 data-i18n="closed_title">MINT SOLD OUT</h4>
             <p data-i18n="closed_desc">Whitelist pre-claim has officially ended. Thank you to everyone who joined the ROBINMAP journey.</p>
             <div class="mint-time-card">
-              <span data-i18n="closed_next">NEXT EVENT · MINTING</span>
-              <strong>16:00 UTC</strong>
+              <span data-i18n="closed_next">NEXT · STAKING AUG 30</span>
+              <strong>AUG 30</strong>
             </div>
             <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="btn-primary" data-i18n="closed_opensea">VIEW ROBINMAP ON OPENSEA ↗</a>
-            <div class="closed-note" data-i18n="closed_note">See you at the minting event, explorers. 🌍</div>
+            <div class="closed-note" data-i18n="closed_note">Reveal is in progress. Get your ROBINMAP ready for staking on August 30. 🌍</div>
           </div>
           <form id="claim-form" style="display:none;" aria-hidden="true">
             <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
@@ -1789,15 +1813,16 @@
   /* ---------------- i18n ---------------- */
   const translations = {
     en: {
-      nav_about: "About", nav_utility: "Utility", nav_claim: "Mint Event", nav_cta: "MINT · 16:00 UTC →",
+      nav_about: "About", nav_utility: "Utility", nav_claim: "Reveal", nav_cta: "STAKING · AUG 30 →",
+      staking_announcement_bar: "ROBINMAP STAKING OPENS AUGUST 30 · 900M $RMAP REWARD POOL", staking_announcement_link: "VIEW STAKING →",
       eyebrow: "Robinhood Chain · Genesis Collection",
       hero_line1: "Every piece is drawn",
       hero_line2: "from a single block hash.",
       hero_sub: "ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.",
-      btn_claim: "MINTING · 16:00 UTC",
+      btn_claim: "STAKING · AUG 30",
       btn_howworks: "HOW IT WORKS",
       btn_mint: "MINT ON OPENSEA ↗",
-      nav_mint: "Mint on OpenSea ↗",
+      nav_mint: "View on OpenSea ↗",
       footer_mint: "Mint on OpenSea ↗",
       stat_supply_label: "Supply", stat_rev_label: "Revenue Share",
       stat_trait_label: "Trait Source", stat_trait_value: "Genesis Hash",
@@ -1805,7 +1830,7 @@
       about_title: "The map is the mechanism",
       about_p1: "Rather than randomizing traits off-chain, ROBINMAP reads coordinates directly out of Robinhood Chain's genesis block. Each piece's position, palette, and rarity tier are hash-derived — meaning the collection's layout existed the moment the chain did.",
       about_p2: "Every mint is checkable against a public Merkle proof, so ownership and trait authenticity can be verified independently of the mint site at any time.",
-      coord_status: "claim closed · minting 16:00 UTC",
+      coord_status: "sold out · reveal in progress",
       nav_game: "Game",
       game_title: "Enter the world",
       game_badge: "Coming Soon",
@@ -1898,19 +1923,19 @@
       legendary_theme: "Celestial capital",
       legendary_resources: "Mythic resource zones, royal structures, unique landmarks, and peak rarity assets.",
       legendary_gameplay: "Reserved for prestige, exclusive experiences, and the strongest long-term utility potential.",
-      claim_title: "Spot claim closed",
-      claim_h3: "Pre-claim is officially closed.",
-      claim_p: "Thank you to everyone who registered. The ROBINMAP spot claim window has ended — see you at the minting event at 16:00 UTC.",
+      claim_title: "Mint sold out",
+      claim_h3: "Minting is complete.",
+      claim_p: "All 4,444 ROBINMAP Genesis coordinates have been minted. Reveal is in progress, and staking officially opens August 30.",
       badge_nowallet: "PRE-CLAIM CLOSED",
-      badge_nopay: "MINTING · 16:00 UTC",
-      badge_oneentry: "SEE YOU AT MINT",
+      badge_nopay: "SOLD OUT · 4,444",
+      badge_oneentry: "REVEAL IN PROGRESS",
       label_wallet: "Wallet address",
       label_handle: "X / Twitter handle (optional)",
       btn_submit: "CLAIM MY SPOT",
       btn_submitting: "SUBMITTING...",
       err_invalid_wallet: "Enter a valid wallet address (starts with 0x, 42 characters).",
       rt_step_label: "NEXT STEP",
-      rt_step_title: "Minting Event · 16:00 UTC",
+      rt_step_title: "Staking Opens · August 30",
       rt_open_btn: "ROBINMAP ON OPENSEA ↗",
       rt_checkbox: "I've retweeted this post",
       err_rt_required: "Please retweet the post and confirm the checkbox before claiming.",
@@ -1920,23 +1945,24 @@
       err_network: "Network error. Please try again.",
       ok_claimed: "Spot claimed — check your wallet for updates.",
       closed_kicker: "PRE-CLAIM STATUS",
-      closed_title: "SPOT CLAIM CLOSED",
-      closed_desc: "Whitelist pre-claim has officially ended. Thank you to everyone who joined the ROBINMAP journey.",
-      closed_next: "NEXT EVENT · MINTING",
+      closed_title: "MINT SOLD OUT",
+      closed_desc: "All 4,444 Genesis coordinates are minted. Reveal is in progress and the next chapter is staking.",
+      closed_next: "NEXT · STAKING AUG 30",
       closed_opensea: "VIEW ROBINMAP ON OPENSEA ↗",
-      closed_note: "See you at the minting event, explorers. 🌍",
+      closed_note: "Reveal is in progress. Get your ROBINMAP ready for staking on August 30. 🌍",
       footer_line: "© ROBINMAP — a Robscription ecosystem project."
     },
     zh: {
-      nav_about: "关于", nav_utility: "机制", nav_claim: "铸造活动", nav_cta: "铸造 · 16:00 UTC →",
+      nav_about: "关于", nav_utility: "机制", nav_claim: "揭晓", nav_cta: "质押 · 8月30日 →",
+      staking_announcement_bar: "ROBINMAP 质押将于 8 月 30 日开放 · 900M $RMAP 奖励池", staking_announcement_link: "查看质押 →",
       eyebrow: "Robinhood Chain · 创世收藏",
       hero_line1: "每一枚都源自",
       hero_line2: "唯一的创世区块哈希。",
       hero_sub: "ROBINMAP 是一个 10,000 枚的生成式收藏系列，每个特征都直接来自创世区块哈希，并通过默克尔证明在链上验证。没有两个坐标是相同的。",
-      btn_claim: "铸造 · 16:00 UTC",
+      btn_claim: "质押 · 8月30日",
       btn_howworks: "了解机制",
       btn_mint: "前往 OPENSEA 铸造 ↗",
-      nav_mint: "前往 OpenSea 铸造 ↗",
+      nav_mint: "在 OpenSea 查看 ↗",
       footer_mint: "前往 OpenSea 铸造 ↗",
       stat_supply_label: "供应量", stat_rev_label: "收益分成",
       stat_trait_label: "特征来源", stat_trait_value: "创世哈希",
@@ -1944,7 +1970,7 @@
       about_title: "地图即机制",
       about_p1: "ROBINMAP 不在链下随机生成特征，而是直接从 Robinhood Chain 的创世区块中读取坐标。每一枚作品的位置、配色和稀有度都由哈希值决定——也就是说，这套收藏的布局在链诞生的那一刻就已经存在。",
       about_p2: "每一次铸造都可以通过公开的默克尔证明进行核验，因此持有权和特征真实性可以随时独立于铸造网站进行验证。",
-      coord_status: "领取已结束 · 16:00 UTC 铸造",
+      coord_status: "已售罄 · 正在揭晓",
       nav_game: "游戏",
       game_title: "踏入世界",
       game_badge: "即将推出",
@@ -2037,19 +2063,19 @@
       legendary_theme: "天穹王都",
       legendary_resources: "神话级资源区域、皇家建筑、独特地标，以及顶级稀有资产。",
       legendary_gameplay: "代表声望、专属体验，以及最强的长期功能潜力。",
-      claim_title: "名额领取已结束",
-      claim_h3: "预领取已正式结束。",
-      claim_p: "感谢所有参与登记的玩家。ROBINMAP 名额领取现已结束——我们将在 16:00 UTC 的铸造活动中再见。",
+      claim_title: "铸造已售罄",
+      claim_h3: "铸造已完成。",
+      claim_p: "全部 4,444 枚 ROBINMAP 创世坐标已完成铸造。揭晓正在进行中，质押将于 8 月 30 日正式开放。",
       badge_nowallet: "预领取已结束",
-      badge_nopay: "铸造 · 16:00 UTC",
-      badge_oneentry: "铸造活动见",
+      badge_nopay: "已售罄 · 4,444",
+      badge_oneentry: "揭晓进行中",
       label_wallet: "钱包地址",
       label_handle: "X / Twitter 账号（选填）",
       btn_submit: "立即领取",
       btn_submitting: "提交中...",
       err_invalid_wallet: "请输入有效的钱包地址（以 0x 开头，共 42 位字符）。",
       rt_step_label: "下一步",
-      rt_step_title: "铸造活动 · 16:00 UTC",
+      rt_step_title: "质押开放 · 8月30日",
       rt_open_btn: "在 OPENSEA 查看 ROBINMAP ↗",
       rt_checkbox: "我已转发该推文",
       err_rt_required: "请先转发该推文并勾选确认框，才能领取名额。",
@@ -2059,11 +2085,11 @@
       err_network: "网络错误，请重试。",
       ok_claimed: "名额已领取 —— 请留意你的钱包更新。",
       closed_kicker: "预领取状态",
-      closed_title: "名额领取已结束",
-      closed_desc: "白名单预领取已正式结束。感谢所有加入 ROBINMAP 世界的玩家。",
-      closed_next: "下一场活动 · 铸造",
+      closed_title: "铸造已售罄",
+      closed_desc: "全部 4,444 枚创世坐标已完成铸造。揭晓正在进行中，下一篇章将是质押。",
+      closed_next: "下一阶段 · 8月30日质押",
       closed_opensea: "在 OPENSEA 查看 ROBINMAP ↗",
-      closed_note: "16:00 UTC 铸造活动见，探索者们。🌍",
+      closed_note: "揭晓正在进行中。准备好你的 ROBINMAP，8 月 30 日开启质押。🌍",
       footer_line: "© ROBINMAP —— Robscription 生态项目。"
     }
   };
@@ -2217,6 +2243,7 @@
     en: {
       title:'Stake ROBINMAP. Earn $RMAP.',
       intro:'Stake your ROBINMAP NFTs and earn a proportional share of 7,000,000 $RMAP every 8 hours of active staking time. Rewards accrue continuously based on how many NFTs you stake and how long they remain staked.',
+      launchBadge:'NEXT CHAPTER', launchDate:'STAKING GOES LIVE · AUGUST 30', launchBody:'Get your ROBINMAP ready. Staking officially opens August 30. Stake your Genesis coordinates to earn $RMAP based on your active staking time. 900M $RMAP is reserved for the staking reward pool.',
       remainingPool:'REMAINING REWARD POOL', remainingSub:'Lifetime staking allocation capped at 900M $RMAP',
       totalStaked:'TOTAL ROBINMAP STAKED', totalStakedSub:'Live staking weight across all wallets',
       currentEpoch:'CURRENT EPOCH', epochSub:'8 hours of active emission per full epoch',
@@ -2240,6 +2267,7 @@
     zh: {
       title:'质押 ROBINMAP，赚取 $RMAP。',
       intro:'质押你的 ROBINMAP NFT，并按比例分享每 8 小时活跃质押时间释放的 7,000,000 $RMAP。奖励会根据质押 NFT 的数量和实际质押时长持续累积。',
+      launchBadge:'下一篇章', launchDate:'质押正式开放 · 8月30日', launchBody:'准备好你的 ROBINMAP。质押将于 8 月 30 日正式开放。质押你的创世坐标，并根据实际活跃质押时间获得 $RMAP。900M $RMAP 已预留用于质押奖励池。',
       remainingPool:'剩余奖励池', remainingSub:'质押奖励生命周期上限为 900M $RMAP',
       totalStaked:'ROBINMAP 总质押量', totalStakedSub:'所有钱包的实时质押权重',
       currentEpoch:'当前周期', epochSub:'每个完整周期对应 8 小时活跃释放时间',
