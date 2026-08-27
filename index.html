@@ -1293,6 +1293,70 @@
     color:var(--muted);
   }
 
+
+
+  /* LIVE STAKING DAPP */
+  .stake-contract-strip{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 4px;padding:13px 15px;border:1px solid rgba(115,247,183,.18);border-radius:14px;background:rgba(115,247,183,.045);}
+  .stake-contract-status{display:flex;align-items:center;gap:9px;font-family:'Space Mono',monospace;font-size:11px;color:#d8d2e7;}
+  .live-dot{width:9px;height:9px;border-radius:50%;background:#777;box-shadow:0 0 10px rgba(255,255,255,.12);}
+  .live-dot.live{background:var(--green);box-shadow:0 0 14px rgba(115,247,183,.65);}
+  .live-dot.paused{background:var(--gold);box-shadow:0 0 14px rgba(255,216,107,.5);}
+  .live-dot.offline{background:#ff6d84;box-shadow:0 0 14px rgba(255,109,132,.45);}
+  .stake-contract-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+  .stake-contract-links a{padding:6px 9px;border:1px solid rgba(199,181,255,.13);border-radius:8px;text-decoration:none;color:#a89fb9;font-size:9px;background:rgba(255,255,255,.025);}
+  .stake-contract-links a:hover{color:var(--green);border-color:rgba(115,247,183,.3);}
+  .live-overview .reward-overview-value>span:first-child{color:#fff;font-size:1em;}
+  .staking-app-shell{margin-top:24px;border:1px solid rgba(199,181,255,.17);border-radius:24px;padding:24px;background:radial-gradient(circle at 100% 0%,rgba(115,247,183,.06),transparent 24rem),linear-gradient(160deg,#17102f,#0e0b22);box-shadow:0 18px 55px rgba(0,0,0,.3);}
+  .staking-app-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:20px;border-bottom:1px solid rgba(199,181,255,.11);}
+  .staking-app-head h3{font-family:'Fredoka',sans-serif;font-size:26px;margin-top:5px;}
+  .staking-app-head p{margin-top:5px;color:#9b92ae;font-size:12px;}
+  .stake-primary-btn,.stake-secondary-btn,.stake-danger-btn,.stake-tiny-btn{appearance:none;font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.03em;cursor:pointer;transition:transform .12s,border-color .12s,background .12s,opacity .12s;}
+  .stake-primary-btn{border:1px solid rgba(115,247,183,.36);border-radius:12px;background:linear-gradient(180deg,#80ffc0,#52d996);color:#07160e;padding:12px 17px;box-shadow:0 5px 0 #237349;}
+  .stake-primary-btn:hover:not(:disabled){transform:translateY(-1px);}
+  .stake-secondary-btn{border:1px solid rgba(199,181,255,.20);border-radius:12px;background:#211a38;color:#d3cae8;padding:11px 14px;}
+  .stake-danger-btn{border:1px solid rgba(255,109,132,.26);border-radius:12px;background:rgba(255,109,132,.08);color:#ff9aaa;padding:11px 14px;}
+  .stake-primary-btn:disabled,.stake-secondary-btn:disabled,.stake-danger-btn:disabled,.stake-tiny-btn:disabled{opacity:.38;cursor:not-allowed;transform:none;}
+  .stake-wallet-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;}
+  .stake-wallet-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;color:#7f7697;}
+  .stake-wallet-address{margin-top:4px;color:#e4deef;font-size:11px;word-break:break-all;}
+  .stake-network-pill{font-family:'Space Mono',monospace;font-size:9px;color:var(--green);padding:7px 9px;border:1px solid rgba(115,247,183,.20);border-radius:999px;background:rgba(115,247,183,.06);}
+  .stake-user-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;}
+  .stake-mini-stat{padding:15px;border:1px solid rgba(199,181,255,.12);border-radius:14px;background:rgba(255,255,255,.025);}
+  .stake-mini-stat span{display:block;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;color:#857c9c;}
+  .stake-mini-stat strong{display:block;margin-top:8px;font-family:'Space Mono',monospace;font-size:13px;color:#fff;overflow-wrap:anywhere;}
+  .stake-projection{margin-top:10px;padding:14px 15px;border:1px solid rgba(115,247,183,.15);border-radius:14px;background:linear-gradient(120deg,rgba(115,247,183,.06),rgba(104,232,255,.025));display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .stake-projection strong{display:block;margin-top:5px;color:var(--green);font-family:'Space Mono',monospace;font-size:16px;}
+  .stake-projection p{max-width:520px;color:#817993;font-size:10px;line-height:1.55;}
+  .stake-action-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px;}
+  .stake-status-message{display:none;margin-top:13px;padding:11px 13px;border-radius:10px;font-family:'Space Mono',monospace;font-size:10px;line-height:1.55;}
+  .stake-status-message.show{display:block;border:1px solid rgba(199,181,255,.15);background:rgba(255,255,255,.035);color:#c7bfd7;}
+  .stake-status-message.ok{border-color:rgba(115,247,183,.23);background:rgba(115,247,183,.06);color:#a8fbd1;}
+  .stake-status-message.err{border-color:rgba(255,109,132,.25);background:rgba(255,109,132,.07);color:#ffb0bd;}
+  .stake-nft-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+  .stake-nft-panel{min-width:0;padding:15px;border:1px solid rgba(199,181,255,.12);border-radius:17px;background:rgba(5,4,16,.32);}
+  .stake-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
+  .stake-panel-head h4{font-family:'Space Mono',monospace;font-size:11px;color:#fff;}
+  .stake-panel-head p{margin-top:4px;font-size:10px;color:#817993;}
+  .stake-tiny-btn{padding:6px 8px;border:1px solid rgba(199,181,255,.15);border-radius:8px;background:rgba(255,255,255,.03);color:#9f96b5;font-size:8px;white-space:nowrap;}
+  .stake-nft-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:460px;overflow:auto;padding-right:2px;}
+  .stake-empty{grid-column:1/-1;min-height:130px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;border:1px dashed rgba(199,181,255,.12);border-radius:12px;color:#6f6783;font-family:'Space Mono',monospace;font-size:9px;line-height:1.6;}
+  .stake-nft-card{position:relative;border:1px solid rgba(199,181,255,.12);border-radius:13px;overflow:hidden;background:#100c25;cursor:pointer;transition:border-color .12s,transform .12s,box-shadow .12s;}
+  .stake-nft-card:hover{transform:translateY(-1px);border-color:rgba(115,247,183,.25);}
+  .stake-nft-card.selected{border-color:rgba(115,247,183,.65);box-shadow:0 0 0 2px rgba(115,247,183,.10),0 0 25px rgba(115,247,183,.08);}
+  .stake-nft-image{aspect-ratio:1/1;background:#090717;overflow:hidden;}
+  .stake-nft-image img{width:100%;height:100%;object-fit:cover;display:block;}
+  .stake-nft-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(115,247,183,.15),transparent 55%),#0b091b;color:var(--green);font-family:'Space Mono',monospace;font-size:11px;}
+  .stake-nft-info{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 9px;}
+  .stake-nft-info strong{font-family:'Space Mono',monospace;font-size:9px;color:#ddd6e8;}
+  .stake-nft-check{width:16px;height:16px;border:1px solid rgba(199,181,255,.25);border-radius:5px;display:flex;align-items:center;justify-content:center;color:#08150e;font-size:10px;}
+  .stake-nft-card.selected .stake-nft-check{background:var(--green);border-color:var(--green);}
+  .stake-safety-note{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:12px 13px;border:1px solid rgba(115,247,183,.12);border-radius:12px;background:rgba(115,247,183,.035);font-size:10px;color:#8f86a3;line-height:1.6;}
+  .stake-safety-note strong{font-family:'Space Mono',monospace;color:var(--green);font-size:9px;white-space:nowrap;}
+  .stake-safety-note.land-note{border-color:rgba(255,120,199,.14);background:rgba(255,120,199,.035);}
+  .stake-safety-note.land-note strong{color:#ff9bd8;}
+  @media(max-width:900px){.stake-user-stats{grid-template-columns:1fr 1fr}.stake-nft-columns{grid-template-columns:1fr}.stake-projection{align-items:flex-start;flex-direction:column}.stake-contract-strip{align-items:flex-start;flex-direction:column}.stake-contract-links{justify-content:flex-start}.live-overview{grid-template-columns:1fr 1fr}.staking-app-head{align-items:flex-start;flex-direction:column}.staking-app-head .stake-primary-btn{width:100%;}}
+  @media(max-width:560px){.stake-user-stats,.live-overview{grid-template-columns:1fr}.stake-action-row>*{width:100%}.stake-wallet-bar{align-items:flex-start;flex-direction:column}.stake-nft-grid{grid-template-columns:1fr 1fr}.staking-app-shell{padding:16px}}
+
 </style>
 </head>
 <body>
@@ -1325,102 +1389,137 @@
 
   <section class="section" id="stake">
     <div class="section-head">
-      <div class="section-title" data-i18n="stake_title">Stake, earn & explore</div>
-      <div class="section-index mono">900M $RMAP / ROBINLAND</div>
+      <div class="section-title" data-stake-i18n="title">Stake ROBINMAP. Earn $RMAP.</div>
+      <div class="section-index mono" id="stake-live-index">ROBINHOOD CHAIN · LIVE CONTRACT</div>
     </div>
 
-    <p class="stake-intro" data-i18n="stake_intro">Stake your ROBINMAP NFT to earn from a dedicated 900,000,000 $RMAP staking pool plus randomized ROBINLAND in-game land rewards. Your rewards are based on your eligible staking weight while your NFT remains staked.</p>
+    <p class="stake-intro" data-stake-i18n="intro">Stake your ROBINMAP NFTs and earn a proportional share of 7,000,000 $RMAP every 8 hours of active staking time. Rewards accrue continuously based on how many NFTs you stake and how long they remain staked.</p>
 
-    <div class="stake-reward-overview">
-      <div class="reward-overview-card">
-        <div class="reward-overview-kicker" data-i18n="pool_label">TOTAL STAKING POOL</div>
-        <div class="reward-overview-value">900,000,000 <span>$RMAP</span></div>
-        <div class="reward-overview-sub" data-i18n="pool_sub">Reserved for the ROBINMAP staking program</div>
+    <div class="stake-contract-strip">
+      <div class="stake-contract-status">
+        <span class="live-dot" id="staking-status-dot"></span>
+        <strong id="staking-status-text">CHECKING CONTRACT…</strong>
       </div>
-      <div class="reward-overview-card">
-        <div class="reward-overview-kicker" data-i18n="reward_type_label">DUAL REWARDS</div>
-        <div class="reward-overview-value reward-small">$RMAP + ROBINLAND</div>
-        <div class="reward-overview-sub" data-i18n="reward_type_sub">Token emissions plus in-game land drops</div>
-      </div>
-      <div class="reward-overview-card">
-        <div class="reward-overview-kicker" data-i18n="epoch_label">REWARD EPOCH</div>
-        <div class="reward-overview-value reward-small">8 <span data-i18n="hours_label">HOURS</span></div>
-        <div class="reward-overview-sub" data-i18n="epoch_sub">Rewards are calculated every distribution cycle</div>
-      </div>
-      <div class="reward-overview-card">
-        <div class="reward-overview-kicker" data-i18n="land_tiers_label">ROBINLAND</div>
-        <div class="reward-overview-value reward-small">5 <span data-i18n="tiers_label">TIERS</span></div>
-        <div class="reward-overview-sub" data-i18n="land_tiers_sub">Common through Legendary rarity</div>
+      <div class="stake-contract-links mono">
+        <a href="https://robinhoodchain.blockscout.com/address/0x25088039B1faF46a150dD5741d0e4d0419C0Dff9" target="_blank" rel="noopener">STAKING ↗</a>
+        <a href="https://robinhoodchain.blockscout.com/token/0xee8107CF661c9f7fb06C273Ab4b092464038E496" target="_blank" rel="noopener">$RMAP ↗</a>
+        <a href="https://robinhoodchain.blockscout.com/token/0x4c81ce5cc9fc131887fee79b10c4a1d48ba3cb78" target="_blank" rel="noopener">ROBINMAP ↗</a>
       </div>
     </div>
 
-    <div class="stake-wrap">
-      <div class="stake-tabs">
-        <div class="stake-tab">
-          <div class="stake-tab-title" data-i18n="stake_tab_title">Stake ROBINMAP</div>
-          <div class="stake-tab-sub" data-i18n="stake_tab_sub">Earn $RMAP + randomized ROBINLAND drops</div>
-        </div>
+    <div class="stake-reward-overview live-overview">
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-stake-i18n="remainingPool">REMAINING REWARD POOL</div>
+        <div class="reward-overview-value"><span id="global-remaining">—</span> <span>$RMAP</span></div>
+        <div class="reward-overview-sub" data-stake-i18n="remainingSub">Lifetime staking allocation capped at 900M $RMAP</div>
       </div>
-
-      <div class="stake-body">
-        <div class="amount-label" data-i18n="amount_label">Amount</div>
-        <div class="amount-row">
-          <input type="text" placeholder="0" disabled>
-          <div class="amount-unit">ROBINMAP</div>
-        </div>
-        <div class="balance-line"><span data-i18n="balance_label">Balance</span>: 0 ROBINMAP</div>
-
-        <div class="stake-earn-grid">
-          <div class="earn-box">
-            <div class="earn-label" data-i18n="rmap_reward_label">$RMAP reward</div>
-            <div class="earn-value">+0.00 $RMAP <span class="unit" data-i18n="per_day">/ day</span></div>
-            <div class="earn-helper" data-i18n="rmap_reward_helper">Estimated token emission while staked</div>
-          </div>
-          <div class="earn-box land-earn-box">
-            <div class="earn-label" data-i18n="land_reward_label">ROBINLAND reward</div>
-            <div class="land-reward-value" data-i18n="land_reward_value">ELIGIBLE FOR DROP</div>
-            <div class="earn-helper" data-i18n="land_reward_helper">Rarity is determined when an eligible land reward is distributed</div>
-          </div>
-        </div>
-
-        <div class="stake-actions">
-          <button type="button" class="btn-max" disabled data-i18n="btn_max">Max</button>
-          <button type="button" class="btn-stake" disabled data-i18n="btn_stake">Stake ROBINMAP</button>
-          <span class="game-badge" data-i18n="stake_badge">Coming Soon</span>
-        </div>
-
-        <p class="stake-note" data-i18n="stake_note">Unstake anytime with no lockup. $RMAP accrues only while your ROBINMAP is eligible and staked; ROBINLAND drops are distributed separately through staking reward epochs.</p>
-
-        <details class="stake-details">
-          <summary data-i18n="stake_details_summary">How ROBINMAP staking rewards work</summary>
-          <div class="stake-detail-copy">
-            <p data-i18n="stake_details_body">A total pool of 900,000,000 $RMAP is allocated to staking rewards. Each reward epoch distributes $RMAP according to eligible staking weight, so your share depends on how much eligible ROBINMAP you have staked and how long it remains staked during the epoch.</p>
-            <ul>
-              <li data-i18n="stake_rule_1">The 900M $RMAP pool is dedicated to staking emissions.</li>
-              <li data-i18n="stake_rule_2">ROBINLAND is a separate in-game reward and does not reduce your $RMAP allocation.</li>
-              <li data-i18n="stake_rule_3">ROBINLAND rarity is assigned from five tiers: Common, Uncommon, Rare, Epic, and Legendary.</li>
-              <li data-i18n="stake_rule_4">Final land drop odds and game-balance parameters will be published before staking goes live.</li>
-            </ul>
-          </div>
-        </details>
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-stake-i18n="totalStaked">TOTAL ROBINMAP STAKED</div>
+        <div class="reward-overview-value"><span id="global-staked">—</span> <span>NFT</span></div>
+        <div class="reward-overview-sub" data-stake-i18n="totalStakedSub">Live staking weight across all wallets</div>
+      </div>
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-stake-i18n="currentEpoch">CURRENT EPOCH</div>
+        <div class="reward-overview-value reward-small"><span id="global-epoch">—</span> <span>/ 129</span></div>
+        <div class="reward-overview-sub" data-stake-i18n="epochSub">8 hours of active emission per full epoch</div>
+      </div>
+      <div class="reward-overview-card">
+        <div class="reward-overview-kicker" data-stake-i18n="activeTimeLeft">ACTIVE EMISSION LEFT</div>
+        <div class="reward-overview-value reward-small" id="global-time-left">—</div>
+        <div class="reward-overview-sub" data-stake-i18n="activeTimeSub">Clock pauses automatically while no NFT is staked</div>
       </div>
     </div>
 
-    <div class="stake-stats">
-      <div class="stake-stat">
-        <div class="stake-stat-label" data-i18n="stat_staked_label">Staked</div>
-        <div class="stake-stat-value">0 ROBINMAP</div>
-        <div class="stake-stat-sub" data-i18n="stat_staked_sub">Your active staking position</div>
+    <div class="staking-app-shell">
+      <div class="staking-app-head">
+        <div>
+          <div class="reward-overview-kicker" data-stake-i18n="dashboard">STAKING DASHBOARD</div>
+          <h3 data-stake-i18n="manage">Manage your ROBINMAP position</h3>
+          <p data-stake-i18n="manageSub">Connect your wallet on Robinhood Chain to stake, unstake and claim $RMAP.</p>
+        </div>
+        <button type="button" class="stake-primary-btn" id="stake-connect-btn" data-stake-i18n="connect">CONNECT WALLET</button>
       </div>
-      <div class="stake-stat">
-        <div class="stake-stat-label" data-i18n="stat_next_label">Next reward epoch</div>
-        <div class="stake-stat-value">— $RMAP</div>
-        <div class="stake-stat-sub" data-i18n="stat_next_sub">Calculated every 8 hours</div>
+
+      <div class="stake-wallet-bar" id="stake-wallet-bar">
+        <div>
+          <div class="stake-wallet-label" data-stake-i18n="wallet">WALLET</div>
+          <div class="stake-wallet-address mono" id="stake-wallet-address">Not connected</div>
+        </div>
+        <div class="stake-network-pill" id="stake-network-pill">ROBINHOOD CHAIN · 4663</div>
       </div>
-      <div class="stake-stat">
-        <div class="stake-stat-label" data-i18n="stat_earned_label">Earned to date</div>
-        <div class="stake-stat-value">0.00 $RMAP</div>
-        <div class="stake-stat-sub"><span data-i18n="stat_earned_sub">Lifetime staking rewards</span> · <span>0 ROBINLAND</span></div>
+
+      <div class="stake-user-stats">
+        <div class="stake-mini-stat">
+          <span data-stake-i18n="walletNfts">YOUR ROBINMAP</span>
+          <strong id="user-owned-count">—</strong>
+        </div>
+        <div class="stake-mini-stat">
+          <span data-stake-i18n="yourStaked">YOUR STAKED</span>
+          <strong id="user-staked-count">—</strong>
+        </div>
+        <div class="stake-mini-stat">
+          <span data-stake-i18n="pending">PENDING REWARDS</span>
+          <strong><span id="user-pending-rmap">—</span> $RMAP</strong>
+        </div>
+        <div class="stake-mini-stat">
+          <span data-stake-i18n="walletRmap">WALLET $RMAP</span>
+          <strong><span id="user-rmap-balance">—</span> $RMAP</strong>
+        </div>
+      </div>
+
+      <div class="stake-projection">
+        <div>
+          <span class="stake-wallet-label" data-stake-i18n="projection">CURRENT PROJECTION</span>
+          <strong id="user-projected-epoch">— $RMAP / 8h</strong>
+        </div>
+        <p data-stake-i18n="projectionNote">Estimate assumes the current total staking weight remains unchanged. Actual rewards change as other users stake or unstake.</p>
+      </div>
+
+      <div class="stake-action-row">
+        <button type="button" class="stake-secondary-btn" id="stake-approve-btn" disabled data-stake-i18n="approve">APPROVE STAKING</button>
+        <button type="button" class="stake-primary-btn" id="stake-selected-btn" disabled data-stake-i18n="stakeSelected">STAKE SELECTED</button>
+        <button type="button" class="stake-secondary-btn" id="stake-claim-btn" disabled data-stake-i18n="claim">CLAIM $RMAP</button>
+        <button type="button" class="stake-danger-btn" id="stake-unstake-btn" disabled data-stake-i18n="unstakeSelected">UNSTAKE SELECTED</button>
+        <button type="button" class="stake-secondary-btn" id="stake-claim-unstake-btn" disabled data-stake-i18n="claimUnstake">CLAIM + UNSTAKE</button>
+      </div>
+
+      <div class="stake-status-message" id="stake-status-message"></div>
+
+      <div class="stake-nft-columns">
+        <div class="stake-nft-panel">
+          <div class="stake-panel-head">
+            <div>
+              <h4 data-stake-i18n="available">AVAILABLE IN WALLET</h4>
+              <p data-stake-i18n="availableSub">Select one or more ROBINMAP NFTs to stake.</p>
+            </div>
+            <button type="button" class="stake-tiny-btn" id="stake-select-all-owned" disabled data-stake-i18n="selectAll">SELECT ALL</button>
+          </div>
+          <div class="stake-nft-grid" id="stake-owned-grid">
+            <div class="stake-empty" data-stake-i18n="connectToLoad">Connect wallet to load your ROBINMAP NFTs.</div>
+          </div>
+        </div>
+
+        <div class="stake-nft-panel">
+          <div class="stake-panel-head">
+            <div>
+              <h4 data-stake-i18n="stakedNfts">STAKED ROBINMAP</h4>
+              <p data-stake-i18n="stakedSub">Select NFTs you want to withdraw.</p>
+            </div>
+            <button type="button" class="stake-tiny-btn" id="stake-select-all-staked" disabled data-stake-i18n="selectAll">SELECT ALL</button>
+          </div>
+          <div class="stake-nft-grid" id="stake-staked-grid">
+            <div class="stake-empty" data-stake-i18n="connectToLoad">Connect wallet to load your ROBINMAP NFTs.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stake-safety-note">
+        <strong data-stake-i18n="onchainTitle">ON-CHAIN RULES</strong>
+        <span data-stake-i18n="onchainBody">No lockup. Claim or unstake anytime. 1 ROBINMAP = 1 staking weight. Emission is fixed at 7M $RMAP per 8 active hours and permanently capped at 900M $RMAP.</span>
+      </div>
+      <div class="stake-safety-note land-note">
+        <strong>ROBINLAND</strong>
+        <span data-stake-i18n="landSeparate">ROBINLAND remains a separate in-game reward program. This staking contract distributes $RMAP only; ROBINLAND eligibility and distributions are handled separately.</span>
       </div>
     </div>
 
@@ -2075,6 +2174,296 @@
       submitBtn.textContent = t("btn_submit");
     }
   });
+</script>
+
+
+<script>
+(() => {
+  const CHAIN_ID = 4663;
+  const CHAIN_HEX = '0x1237';
+  const RPC_URL = 'https://rpc.mainnet.chain.robinhood.com';
+  const BLOCKSCOUT = 'https://robinhoodchain.blockscout.com';
+  const NFT_ADDRESS = '0x4c81ce5cc9fc131887fee79b10c4a1d48ba3cb78';
+  const RMAP_ADDRESS = '0xee8107CF661c9f7fb06C273Ab4b092464038E496';
+  const STAKING_ADDRESS = '0x25088039B1faF46a150dD5741d0e4d0419C0Dff9';
+  const EPOCH_REWARD = 7000000;
+
+  const STAKING_ABI = [
+    'function stakingStarted() view returns (bool)',
+    'function depositsPaused() view returns (bool)',
+    'function totalStaked() view returns (uint256)',
+    'function remainingRewards() view returns (uint256)',
+    'function currentEpoch() view returns (uint256)',
+    'function estimatedActiveSecondsRemaining() view returns (uint256)',
+    'function rewardPoolBalance() view returns (uint256)',
+    'function pendingRewards(address) view returns (uint256)',
+    'function getStakedTokens(address) view returns (uint256[])',
+    'function stakedBalance(address) view returns (uint256)',
+    'function stake(uint256[] tokenIds)',
+    'function unstake(uint256[] tokenIds)',
+    'function claim() returns (uint256)',
+    'function claimAndUnstake(uint256[] tokenIds) returns (uint256)'
+  ];
+  const NFT_ABI = [
+    'function isApprovedForAll(address owner,address operator) view returns (bool)',
+    'function setApprovalForAll(address operator,bool approved)',
+    'function ownerOf(uint256 tokenId) view returns (address)'
+  ];
+  const ERC20_ABI = ['function balanceOf(address) view returns (uint256)'];
+
+  const I18N = {
+    en: {
+      title:'Stake ROBINMAP. Earn $RMAP.',
+      intro:'Stake your ROBINMAP NFTs and earn a proportional share of 7,000,000 $RMAP every 8 hours of active staking time. Rewards accrue continuously based on how many NFTs you stake and how long they remain staked.',
+      remainingPool:'REMAINING REWARD POOL', remainingSub:'Lifetime staking allocation capped at 900M $RMAP',
+      totalStaked:'TOTAL ROBINMAP STAKED', totalStakedSub:'Live staking weight across all wallets',
+      currentEpoch:'CURRENT EPOCH', epochSub:'8 hours of active emission per full epoch',
+      activeTimeLeft:'ACTIVE EMISSION LEFT', activeTimeSub:'Clock pauses automatically while no NFT is staked',
+      dashboard:'STAKING DASHBOARD', manage:'Manage your ROBINMAP position', manageSub:'Connect your wallet on Robinhood Chain to stake, unstake and claim $RMAP.',
+      connect:'CONNECT WALLET', connected:'CONNECTED', wallet:'WALLET', walletNfts:'YOUR ROBINMAP', yourStaked:'YOUR STAKED', pending:'PENDING REWARDS', walletRmap:'WALLET $RMAP',
+      projection:'CURRENT PROJECTION', projectionNote:'Estimate assumes the current total staking weight remains unchanged. Actual rewards change as other users stake or unstake.',
+      approve:'APPROVE STAKING', approved:'APPROVED ✓', stakeSelected:'STAKE SELECTED', claim:'CLAIM $RMAP', unstakeSelected:'UNSTAKE SELECTED', claimUnstake:'CLAIM + UNSTAKE',
+      available:'AVAILABLE IN WALLET', availableSub:'Select one or more ROBINMAP NFTs to stake.', stakedNfts:'STAKED ROBINMAP', stakedSub:'Select NFTs you want to withdraw.', selectAll:'SELECT ALL', clear:'CLEAR',
+      connectToLoad:'Connect wallet to load your ROBINMAP NFTs.', noOwned:'No unstaked ROBINMAP NFTs found in this wallet.', noStaked:'No ROBINMAP NFTs are currently staked by this wallet.',
+      onchainTitle:'ON-CHAIN RULES', onchainBody:'No lockup. Claim or unstake anytime. 1 ROBINMAP = 1 staking weight. Emission is fixed at 7M $RMAP per 8 active hours and permanently capped at 900M $RMAP.',
+      landSeparate:'ROBINLAND remains a separate in-game reward program. This staking contract distributes $RMAP only; ROBINLAND eligibility and distributions are handled separately.',
+      statusLive:'STAKING LIVE', statusPaused:'DEPOSITS PAUSED', statusNotStarted:'STAKING NOT STARTED', statusComplete:'REWARDS COMPLETE', statusError:'RPC UNAVAILABLE',
+      switchNetwork:'Switching to Robinhood Chain…', walletConnected:'Wallet connected. Select your ROBINMAP NFTs below.', loadingNfts:'Loading ROBINMAP NFTs…',
+      approvePrompt:'Approve the staking contract once to manage your selected ROBINMAP NFTs.', approving:'Waiting for approval confirmation…', approvedMsg:'Staking contract approved.',
+      selectStake:'Select at least one available ROBINMAP NFT.', selectUnstake:'Select at least one staked ROBINMAP NFT.', staking:'Submitting stake transaction…', stakedOk:'ROBINMAP staked successfully.',
+      unstaking:'Submitting unstake transaction…', unstakedOk:'ROBINMAP unstaked successfully.', claiming:'Claiming $RMAP rewards…', claimedOk:'$RMAP rewards claimed successfully.', claimUnstaking:'Claiming rewards and unstaking…', claimUnstakedOk:'Rewards claimed and ROBINMAP unstaked.',
+      txRejected:'Transaction was cancelled or rejected.', genericError:'Transaction failed. Check your wallet and contract status, then try again.', nftApiError:'Wallet connected, but NFT discovery is temporarily unavailable. Refresh and try again.', wrongNetwork:'Please switch your wallet to Robinhood Chain.',
+      days:'d', hours:'h', minutes:'m'
+    },
+    zh: {
+      title:'质押 ROBINMAP，赚取 $RMAP。',
+      intro:'质押你的 ROBINMAP NFT，并按比例分享每 8 小时活跃质押时间释放的 7,000,000 $RMAP。奖励会根据质押 NFT 的数量和实际质押时长持续累积。',
+      remainingPool:'剩余奖励池', remainingSub:'质押奖励生命周期上限为 900M $RMAP',
+      totalStaked:'ROBINMAP 总质押量', totalStakedSub:'所有钱包的实时质押权重',
+      currentEpoch:'当前周期', epochSub:'每个完整周期对应 8 小时活跃释放时间',
+      activeTimeLeft:'剩余活跃释放时间', activeTimeSub:'当没有 NFT 被质押时，释放时钟会自动暂停',
+      dashboard:'质押控制台', manage:'管理你的 ROBINMAP 质押仓位', manageSub:'连接 Robinhood Chain 钱包，即可质押、解除质押并领取 $RMAP。',
+      connect:'连接钱包', connected:'已连接', wallet:'钱包', walletNfts:'你的 ROBINMAP', yourStaked:'你的质押', pending:'待领取奖励', walletRmap:'钱包 $RMAP',
+      projection:'当前预计收益', projectionNote:'该估算假设当前总质押权重保持不变。其他用户质押或解除质押时，实际奖励会随之变化。',
+      approve:'授权质押合约', approved:'已授权 ✓', stakeSelected:'质押所选 NFT', claim:'领取 $RMAP', unstakeSelected:'解除所选质押', claimUnstake:'领取 + 解除质押',
+      available:'钱包内可质押 NFT', availableSub:'选择一个或多个 ROBINMAP NFT 进行质押。', stakedNfts:'已质押 ROBINMAP', stakedSub:'选择你想取回的 NFT。', selectAll:'全选', clear:'清除',
+      connectToLoad:'连接钱包以加载你的 ROBINMAP NFT。', noOwned:'此钱包中未找到可质押的 ROBINMAP NFT。', noStaked:'此钱包当前没有质押 ROBINMAP NFT。',
+      onchainTitle:'链上规则', onchainBody:'无锁仓期，可随时领取或解除质押。1 ROBINMAP = 1 质押权重。每 8 小时活跃时间固定释放 7M $RMAP，总奖励永久上限为 900M $RMAP。',
+      landSeparate:'ROBINLAND 仍属于独立的游戏内奖励计划。本质押合约只分发 $RMAP；ROBINLAND 的资格与发放将单独处理。',
+      statusLive:'质押已开放', statusPaused:'新质押已暂停', statusNotStarted:'质押尚未启动', statusComplete:'奖励释放已完成', statusError:'RPC 暂时不可用',
+      switchNetwork:'正在切换至 Robinhood Chain…', walletConnected:'钱包已连接，请在下方选择 ROBINMAP NFT。', loadingNfts:'正在加载 ROBINMAP NFT…',
+      approvePrompt:'首次使用时，请授权质押合约管理你选择的 ROBINMAP NFT。', approving:'等待授权交易确认…', approvedMsg:'质押合约已授权。',
+      selectStake:'请至少选择一个可质押的 ROBINMAP NFT。', selectUnstake:'请至少选择一个已质押的 ROBINMAP NFT。', staking:'正在提交质押交易…', stakedOk:'ROBINMAP 质押成功。',
+      unstaking:'正在提交解除质押交易…', unstakedOk:'ROBINMAP 已成功解除质押。', claiming:'正在领取 $RMAP 奖励…', claimedOk:'$RMAP 奖励领取成功。', claimUnstaking:'正在领取奖励并解除质押…', claimUnstakedOk:'奖励已领取，ROBINMAP 已解除质押。',
+      txRejected:'交易已取消或被拒绝。', genericError:'交易失败。请检查钱包和合约状态后重试。', nftApiError:'钱包已连接，但暂时无法读取 NFT。请刷新后重试。', wrongNetwork:'请将钱包切换至 Robinhood Chain。',
+      days:'天', hours:'小时', minutes:'分'
+    }
+  };
+
+  let readProvider, readStaking, walletProvider, signer, walletAddress, writeStaking, nftContract, rmapContract;
+  let ownedNFTs = [], stakedNFTs = [], selectedOwned = new Set(), selectedStaked = new Set();
+  let globalTotalStaked = 0n, stakingStarted = false, depositsPaused = false, remainingWei = 0n;
+  let approvedForAll = false;
+
+  const $ = (id) => document.getElementById(id);
+  const lang = () => (typeof currentLang !== 'undefined' && currentLang === 'zh') ? 'zh' : 'en';
+  const tr = (k) => I18N[lang()][k] || I18N.en[k] || k;
+  const fmt = (n, max=2) => Number(n).toLocaleString('en-US',{maximumFractionDigits:max});
+  const fmtToken = (wei, max=2) => fmt(ethers.formatUnits(wei || 0n,18), max);
+  const short = (a) => a ? a.slice(0,6)+'…'+a.slice(-4) : '';
+
+  function applyStakeLanguage(){
+    document.querySelectorAll('[data-stake-i18n]').forEach(el => {
+      const key = el.getAttribute('data-stake-i18n');
+      if(I18N[lang()][key] !== undefined) el.textContent = I18N[lang()][key];
+    });
+    if(walletAddress) $('stake-connect-btn').textContent = tr('connected')+' · '+short(walletAddress);
+    renderNFTs();
+    updateApprovalButton();
+    updateActionButtons();
+  }
+
+  function status(msg, type='show'){
+    const el=$('stake-status-message');
+    if(!msg){ el.className='stake-status-message'; el.textContent=''; return; }
+    el.textContent=msg; el.className='stake-status-message show'+(type==='ok'?' ok':type==='err'?' err':'');
+  }
+
+  function humanTime(seconds){
+    let s=Number(seconds||0n); if(!Number.isFinite(s)||s<0) s=0;
+    const d=Math.floor(s/86400); s%=86400; const h=Math.floor(s/3600); s%=3600; const m=Math.floor(s/60);
+    return `${d}${tr('days')} ${h}${tr('hours')} ${m}${tr('minutes')}`;
+  }
+
+  function ipfsUrl(url){
+    if(!url) return '';
+    if(url.startsWith('ipfs://')) return 'https://ipfs.io/ipfs/'+url.slice(7);
+    return url;
+  }
+
+  async function switchToRobinhood(){
+    if(!window.ethereum) throw new Error('NO_WALLET');
+    const current = await window.ethereum.request({method:'eth_chainId'});
+    if(parseInt(current,16) === CHAIN_ID) return;
+    status(tr('switchNetwork'));
+    try{
+      await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:CHAIN_HEX}]});
+    }catch(e){
+      if(e.code===4902 || e.code===-32603){
+        await window.ethereum.request({method:'wallet_addEthereumChain',params:[{
+          chainId:CHAIN_HEX, chainName:'Robinhood Chain', nativeCurrency:{name:'Ether',symbol:'ETH',decimals:18}, rpcUrls:[RPC_URL], blockExplorerUrls:[BLOCKSCOUT]
+        }]});
+      } else throw e;
+    }
+  }
+
+  async function connectWallet(){
+    try{
+      if(!window.ethereum){ status('No EVM wallet detected. Install MetaMask, Rabby or another browser wallet.', 'err'); return; }
+      await switchToRobinhood();
+      walletProvider = new ethers.BrowserProvider(window.ethereum);
+      await walletProvider.send('eth_requestAccounts',[]);
+      signer = await walletProvider.getSigner();
+      walletAddress = await signer.getAddress();
+      writeStaking = new ethers.Contract(STAKING_ADDRESS, STAKING_ABI, signer);
+      nftContract = new ethers.Contract(NFT_ADDRESS, NFT_ABI, signer);
+      rmapContract = new ethers.Contract(RMAP_ADDRESS, ERC20_ABI, signer);
+      $('stake-wallet-address').textContent = walletAddress;
+      $('stake-connect-btn').textContent = tr('connected')+' · '+short(walletAddress);
+      status(tr('walletConnected'),'ok');
+      await refreshAll(true);
+    }catch(e){ handleError(e); }
+  }
+
+  async function fetchOwnedRobinmaps(address){
+    const found=[]; let url=`${BLOCKSCOUT}/api/v2/addresses/${address}/nft?type=ERC-721`; let pages=0;
+    while(url && pages<40){
+      const res=await fetch(url,{headers:{'accept':'application/json'}}); if(!res.ok) throw new Error('NFT_API');
+      const data=await res.json();
+      for(const item of (data.items||[])){
+        const token=item.token||{};
+        const addr=(token.address||token.address_hash||token.addressHash||item.token_contract_address_hash||item.contract_address||'').toLowerCase();
+        if(addr===NFT_ADDRESS.toLowerCase()){
+          const meta=item.metadata||{};
+          found.push({id:String(item.id),name:meta.name||`ROBINMAP #${item.id}`,image:ipfsUrl(item.image_url||item.media_url||meta.image||meta.image_url||'')});
+        }
+      }
+      const np=data.next_page_params;
+      if(!np) break;
+      const qs=new URLSearchParams(); Object.entries(np).forEach(([k,v])=>{if(v!==null&&v!==undefined)qs.set(k,v)}); qs.set('type','ERC-721');
+      url=`${BLOCKSCOUT}/api/v2/addresses/${address}/nft?${qs.toString()}`; pages++;
+    }
+    const unique=new Map(found.map(x=>[x.id,x]));
+    return [...unique.values()].sort((a,b)=>BigInt(a.id)<BigInt(b.id)?-1:1);
+  }
+
+  async function fetchNftInstance(id){
+    try{
+      const r=await fetch(`${BLOCKSCOUT}/api/v2/tokens/${NFT_ADDRESS}/instances/${id}`); if(!r.ok)return null; const x=await r.json(); const m=x.metadata||{};
+      return {id:String(id),name:m.name||`ROBINMAP #${id}`,image:ipfsUrl(x.image_url||x.media_url||m.image||m.image_url||'')};
+    }catch{return null;}
+  }
+
+  function nftCard(nft, mode){
+    const selected=(mode==='owned'?selectedOwned:selectedStaked).has(String(nft.id));
+    const card=document.createElement('div'); card.className='stake-nft-card'+(selected?' selected':''); card.dataset.id=nft.id;
+    const media=document.createElement('div'); media.className='stake-nft-image';
+    if(nft.image){ const img=document.createElement('img'); img.src=nft.image; img.alt=nft.name||`ROBINMAP #${nft.id}`; img.loading='lazy'; img.onerror=()=>{media.innerHTML=`<div class="stake-nft-fallback">ROBINMAP #${nft.id}</div>`}; media.appendChild(img); }
+    else media.innerHTML=`<div class="stake-nft-fallback">ROBINMAP #${nft.id}</div>`;
+    const info=document.createElement('div'); info.className='stake-nft-info'; info.innerHTML=`<strong>${escapeHtml(nft.name||`ROBINMAP #${nft.id}`)}</strong><span class="stake-nft-check">${selected?'✓':''}</span>`;
+    card.append(media,info); card.addEventListener('click',()=>toggleNft(mode,String(nft.id))); return card;
+  }
+  function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+  function toggleNft(mode,id){ const set=mode==='owned'?selectedOwned:selectedStaked; set.has(id)?set.delete(id):set.add(id); renderNFTs(); updateProjection(); updateActionButtons(); }
+  function renderNFTs(){
+    const og=$('stake-owned-grid'), sg=$('stake-staked-grid'); if(!og||!sg)return;
+    og.innerHTML=''; sg.innerHTML='';
+    if(!walletAddress){ og.innerHTML=`<div class="stake-empty">${tr('connectToLoad')}</div>`; sg.innerHTML=`<div class="stake-empty">${tr('connectToLoad')}</div>`; return; }
+    if(!ownedNFTs.length) og.innerHTML=`<div class="stake-empty">${tr('noOwned')}</div>`; else ownedNFTs.forEach(n=>og.appendChild(nftCard(n,'owned')));
+    if(!stakedNFTs.length) sg.innerHTML=`<div class="stake-empty">${tr('noStaked')}</div>`; else stakedNFTs.forEach(n=>sg.appendChild(nftCard(n,'staked')));
+    $('stake-select-all-owned').disabled=!ownedNFTs.length; $('stake-select-all-staked').disabled=!stakedNFTs.length;
+    $('stake-select-all-owned').textContent=selectedOwned.size===ownedNFTs.length&&ownedNFTs.length?tr('clear'):tr('selectAll');
+    $('stake-select-all-staked').textContent=selectedStaked.size===stakedNFTs.length&&stakedNFTs.length?tr('clear'):tr('selectAll');
+  }
+
+  function updateApprovalButton(){
+    const b=$('stake-approve-btn'); if(!b)return; b.textContent=approvedForAll?tr('approved'):tr('approve'); b.disabled=!walletAddress||approvedForAll;
+  }
+  function updateActionButtons(){
+    const canDeposit=walletAddress&&stakingStarted&&!depositsPaused&&remainingWei>0n;
+    $('stake-selected-btn').disabled=!canDeposit||!approvedForAll||selectedOwned.size===0;
+    $('stake-claim-btn').disabled=!walletAddress||!stakingStarted;
+    $('stake-unstake-btn').disabled=!walletAddress||!stakingStarted||selectedStaked.size===0;
+    $('stake-claim-unstake-btn').disabled=!walletAddress||!stakingStarted||selectedStaked.size===0;
+  }
+  function updateProjection(){
+    const currentlyStaked=BigInt(stakedNFTs.length); const selected=BigInt(selectedOwned.size);
+    let denom=globalTotalStaked; let numerator=currentlyStaked;
+    if(selected>0n){denom+=selected;numerator+=selected;}
+    let estimate=0;
+    if(denom>0n&&numerator>0n) estimate=EPOCH_REWARD*Number(numerator)/Number(denom);
+    $('user-projected-epoch').textContent=`≈ ${fmt(estimate,2)} $RMAP / 8h`;
+  }
+
+  async function refreshGlobal(){
+    try{
+      if(!window.ethers) return;
+      if(!readProvider){ readProvider=new ethers.JsonRpcProvider(RPC_URL,CHAIN_ID,{staticNetwork:true}); readStaking=new ethers.Contract(STAKING_ADDRESS,STAKING_ABI,readProvider); }
+      const [started,paused,total,remaining,epoch,timeLeft]=await Promise.all([
+        readStaking.stakingStarted(),readStaking.depositsPaused(),readStaking.totalStaked(),readStaking.remainingRewards(),readStaking.currentEpoch(),readStaking.estimatedActiveSecondsRemaining()
+      ]);
+      stakingStarted=started; depositsPaused=paused; globalTotalStaked=total; remainingWei=remaining;
+      $('global-remaining').textContent=fmtToken(remaining,0); $('global-staked').textContent=fmt(total.toString(),0); $('global-epoch').textContent=epoch.toString(); $('global-time-left').textContent=humanTime(timeLeft);
+      const dot=$('staking-status-dot'), txt=$('staking-status-text'); dot.className='live-dot';
+      if(remaining===0n&&started){dot.classList.add('offline');txt.textContent=tr('statusComplete');}
+      else if(!started){dot.classList.add('offline');txt.textContent=tr('statusNotStarted');}
+      else if(paused){dot.classList.add('paused');txt.textContent=tr('statusPaused');}
+      else{dot.classList.add('live');txt.textContent=tr('statusLive');}
+      updateProjection();updateActionButtons();
+    }catch(e){ $('staking-status-dot').className='live-dot offline'; $('staking-status-text').textContent=tr('statusError'); console.warn('staking global read failed',e); }
+  }
+
+  async function refreshUser(loadNfts=false){
+    if(!walletAddress||!signer)return;
+    try{
+      const [pending,stakedIds,balance,approved]=await Promise.all([
+        writeStaking.pendingRewards(walletAddress),writeStaking.getStakedTokens(walletAddress),rmapContract.balanceOf(walletAddress),nftContract.isApprovedForAll(walletAddress,STAKING_ADDRESS)
+      ]);
+      approvedForAll=approved;
+      const ids=stakedIds.map(x=>x.toString());
+      if(loadNfts){
+        status(tr('loadingNfts'));
+        try{ ownedNFTs=await fetchOwnedRobinmaps(walletAddress); }
+        catch(e){ ownedNFTs=[]; status(tr('nftApiError'),'err'); }
+      }
+      const ownedMap=new Map(ownedNFTs.map(n=>[n.id,n]));
+      const stakedLoaded=await Promise.all(ids.map(async id=>ownedMap.get(id)||await fetchNftInstance(id)||{id,name:`ROBINMAP #${id}`,image:''}));
+      stakedNFTs=stakedLoaded;
+      const stakedSet=new Set(ids); ownedNFTs=ownedNFTs.filter(n=>!stakedSet.has(n.id));
+      selectedOwned=new Set([...selectedOwned].filter(id=>ownedNFTs.some(n=>n.id===id))); selectedStaked=new Set([...selectedStaked].filter(id=>stakedSet.has(id)));
+      $('user-owned-count').textContent=ownedNFTs.length.toLocaleString(); $('user-staked-count').textContent=ids.length.toLocaleString(); $('user-pending-rmap').textContent=fmtToken(pending,4); $('user-rmap-balance').textContent=fmtToken(balance,2);
+      renderNFTs();updateApprovalButton();updateActionButtons();updateProjection(); if(loadNfts&&$('stake-status-message').classList.contains('err')===false) status(tr('walletConnected'),'ok');
+    }catch(e){ console.warn('user refresh failed',e); handleError(e); }
+  }
+
+  async function refreshAll(loadNfts=false){await refreshGlobal();await refreshUser(loadNfts);}
+
+  async function approve(){try{status(tr('approving'));const tx=await nftContract.setApprovalForAll(STAKING_ADDRESS,true);await tx.wait();approvedForAll=true;updateApprovalButton();updateActionButtons();status(tr('approvedMsg'),'ok');}catch(e){handleError(e);}}
+  async function stakeSelected(){if(!selectedOwned.size){status(tr('selectStake'),'err');return;}try{status(tr('staking'));const ids=[...selectedOwned].map(BigInt);const tx=await writeStaking.stake(ids);await tx.wait();selectedOwned.clear();status(tr('stakedOk'),'ok');await refreshAll(true);}catch(e){handleError(e);}}
+  async function claim(){try{status(tr('claiming'));const tx=await writeStaking.claim();await tx.wait();status(tr('claimedOk'),'ok');await refreshAll(false);}catch(e){handleError(e);}}
+  async function unstake(withClaim=false){if(!selectedStaked.size){status(tr('selectUnstake'),'err');return;}try{status(tr(withClaim?'claimUnstaking':'unstaking'));const ids=[...selectedStaked].map(BigInt);const tx=withClaim?await writeStaking.claimAndUnstake(ids):await writeStaking.unstake(ids);await tx.wait();selectedStaked.clear();status(tr(withClaim?'claimUnstakedOk':'unstakedOk'),'ok');await refreshAll(true);}catch(e){handleError(e);}}
+  function handleError(e){console.error(e);const code=e?.code||e?.info?.error?.code; if(code===4001||code==='ACTION_REJECTED')status(tr('txRejected'),'err'); else if(String(e?.message||'').toLowerCase().includes('chain'))status(tr('wrongNetwork'),'err'); else status(tr('genericError'),'err');}
+
+  function bind(){
+    $('stake-connect-btn').addEventListener('click',connectWallet); $('stake-approve-btn').addEventListener('click',approve); $('stake-selected-btn').addEventListener('click',stakeSelected); $('stake-claim-btn').addEventListener('click',claim); $('stake-unstake-btn').addEventListener('click',()=>unstake(false)); $('stake-claim-unstake-btn').addEventListener('click',()=>unstake(true));
+    $('stake-select-all-owned').addEventListener('click',()=>{if(selectedOwned.size===ownedNFTs.length)selectedOwned.clear();else ownedNFTs.forEach(n=>selectedOwned.add(n.id));renderNFTs();updateProjection();updateActionButtons();});
+    $('stake-select-all-staked').addEventListener('click',()=>{if(selectedStaked.size===stakedNFTs.length)selectedStaked.clear();else stakedNFTs.forEach(n=>selectedStaked.add(n.id));renderNFTs();updateActionButtons();});
+    document.getElementById('lang-en')?.addEventListener('click',()=>setTimeout(applyStakeLanguage,0)); document.getElementById('lang-zh')?.addEventListener('click',()=>setTimeout(applyStakeLanguage,0));
+    if(window.ethereum){window.ethereum.on?.('accountsChanged',()=>location.reload());window.ethereum.on?.('chainChanged',()=>location.reload());}
+  }
+
+  document.addEventListener('DOMContentLoaded',async()=>{applyStakeLanguage();bind();await refreshGlobal();setInterval(async()=>{await refreshGlobal();if(walletAddress)await refreshUser(false)},15000);});
+})();
 </script>
 
 </body>
