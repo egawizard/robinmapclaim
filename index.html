@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0c0820">
-<title>ROBINMAP — Claim Your Spot</title>
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABYUlEQVR4nO2VPUsDQRCG37vdnF9EFIUQyQliYWEheGehf0B/gV0I2IqQ2kr8BVcE7Cwl2CiIjWBpECREUZRACk3hB1EQziTe5vbWwqAExLvoXiHmrWaHmXmGGXZXiRVXEaYoANuwQqoezafVkEp/qAPoAH4v6hvRu7lIpkaaB+4J2/FKj429y8b+FYQMQIuIqgz0EFMnpq7qg85Gzjcj8IgYtw3Lns3UV3bBOAAtOQ3Nv782d8BcN3ftnpQBoIuq8ahsQKtEjfnGtLkDjVIzQWdGAXjFiqhU5QE0Es2nm7YAP7t9XTsIkveTEYmnqpM58srPUgGM24ZVX94B48pwX/f6PCJEKgAA4B7fsOwpADXeH1mYkA8AwLIFcA+AljSghAAQDy/uYQmAOj5E58bkAwCwrcK7oaWMUAD8/I5f3AMgRoJMxr4P9r8HtaXtL5ypbMBu/v6H0wH8AwAF8PnQh6A3TM5o1NKcWrMAAAAASUVORK5CYII=">
-<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAqklEQVR4nGMUv1nFQApgYWBg+Gw8gUjVvGcLmEgynoGBgWQNLGh8tnB99jJHhr///j35+KNt398zjwnb8O/5p8+WU/7dfsOebkGak/7/+E3YSQwMDEySfLyn8v6/+/YtfgVRNvx7/ulr6CJGHnYmLXFinfTv3rvfO2+yRRkSq4GBgeH36ovM+lLMGJag++HXyou/Vl5kYGD4e/Ul1hRA+5gmK2nwni0gXgMA7085guzzAKcAAAAASUVORK5CYII=">
-<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<title>ROBINMAP — Minting Event · 16:00 UTC</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
@@ -1192,6 +1191,107 @@
     filter:saturate(1.08) contrast(1.02);
   }
 
+
+
+  /* CLAIM CLOSED STATE */
+  .claim-closed-card{
+    min-height:100%;
+    border:1px solid rgba(145,255,120,.28);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(100,255,110,.12), transparent 42%),
+      linear-gradient(180deg, rgba(15,24,20,.96), rgba(8,12,11,.98));
+    border-radius:22px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.025), 0 18px 50px rgba(0,0,0,.22);
+  }
+  .claim-closed-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:linear-gradient(rgba(125,255,110,.025) 1px, transparent 1px),linear-gradient(90deg,rgba(125,255,110,.025) 1px,transparent 1px);
+    background-size:24px 24px;
+    pointer-events:none;
+  }
+  .closed-kicker{
+    position:relative;
+    z-index:1;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    color:var(--green);
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .closed-icon{
+    position:relative;
+    z-index:1;
+    width:62px;height:62px;
+    border-radius:18px;
+    display:grid;place-items:center;
+    margin-bottom:16px;
+    font-family:var(--mono);
+    font-size:28px;
+    color:#071009;
+    background:var(--green);
+    box-shadow:0 0 34px rgba(125,255,110,.26);
+    transform:rotate(3deg);
+  }
+  .claim-closed-card h4{
+    position:relative;
+    z-index:1;
+    margin:0 0 10px;
+    font-size:clamp(24px,3vw,38px);
+    letter-spacing:-.03em;
+  }
+  .claim-closed-card > p{
+    position:relative;
+    z-index:1;
+    margin:0 0 22px;
+    max-width:470px;
+    color:var(--muted);
+    line-height:1.65;
+  }
+  .mint-time-card{
+    position:relative;
+    z-index:1;
+    width:min(100%,430px);
+    border:1px solid rgba(125,255,110,.24);
+    background:rgba(125,255,110,.055);
+    border-radius:16px;
+    padding:17px 18px;
+    margin-bottom:18px;
+  }
+  .mint-time-card span{
+    display:block;
+    font-family:var(--mono);
+    color:var(--muted);
+    font-size:10px;
+    letter-spacing:.18em;
+    margin-bottom:5px;
+  }
+  .mint-time-card strong{
+    display:block;
+    font-family:var(--mono);
+    color:var(--green);
+    font-size:clamp(24px,4vw,40px);
+    letter-spacing:.06em;
+  }
+  .closed-note{
+    position:relative;
+    z-index:1;
+    margin-top:14px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+  }
+
 </style>
 </head>
 <body>
@@ -1206,7 +1306,7 @@
       <a href="#game" data-i18n="nav_game">Game</a>
       <a href="#stake" data-i18n="nav_stake">Stake</a>
       <a href="#utility" data-i18n="nav_utility">Utility</a>
-      <a href="#claim" data-i18n="nav_claim">Claim</a>
+      <a href="#claim" data-i18n="nav_claim">Mint Event</a>
     </div>
     <div class="nav-right">
       <div class="lang-toggle">
@@ -1214,7 +1314,7 @@
         <button type="button" id="lang-zh">中文</button>
       </div>
       <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_mint">Mint on OpenSea ↗</a>
-      <a href="#claim" class="nav-cta" data-i18n="nav_cta">Claim Spot →</a>
+      <a href="#claim" class="nav-cta" data-i18n="nav_cta">MINT · 16:00 UTC →</a>
     </div>
   </div>
 </nav>
@@ -1335,7 +1435,7 @@
 
       <div class="tier-grid">
         <article class="tier-card tier-common">
-          <div class="tier-media"><img src="assets/robinland-common.webp" alt="ROBINLAND Common" loading="lazy" decoding="async"></div>
+          <div class="tier-media"><img src="assets/robinland-common.webp" alt="ROBINLAND Common"></div>
           <div class="tier-copy">
             <div class="tier-top"><div class="tier-number">01</div><div class="tier-gem">◆</div></div>
             <div class="tier-name" data-i18n="tier_common">Common</div>
@@ -1350,7 +1450,7 @@
         </article>
 
         <article class="tier-card tier-uncommon">
-          <div class="tier-media"><img src="assets/robinland-uncommon.webp" alt="ROBINLAND Uncommon" loading="lazy" decoding="async"></div>
+          <div class="tier-media"><img src="assets/robinland-uncommon.webp" alt="ROBINLAND Uncommon"></div>
           <div class="tier-copy">
             <div class="tier-top"><div class="tier-number">02</div><div class="tier-gem">◆</div></div>
             <div class="tier-name" data-i18n="tier_uncommon">Uncommon</div>
@@ -1365,7 +1465,7 @@
         </article>
 
         <article class="tier-card tier-rare">
-          <div class="tier-media"><img src="assets/robinland-rare.webp" alt="ROBINLAND Rare" loading="lazy" decoding="async"></div>
+          <div class="tier-media"><img src="assets/robinland-rare.webp" alt="ROBINLAND Rare"></div>
           <div class="tier-copy">
             <div class="tier-top"><div class="tier-number">03</div><div class="tier-gem">◆</div></div>
             <div class="tier-name" data-i18n="tier_rare">Rare</div>
@@ -1380,7 +1480,7 @@
         </article>
 
         <article class="tier-card tier-epic">
-          <div class="tier-media"><img src="assets/robinland-epic.webp" alt="ROBINLAND Epic" loading="lazy" decoding="async"></div>
+          <div class="tier-media"><img src="assets/robinland-epic.webp" alt="ROBINLAND Epic"></div>
           <div class="tier-copy">
             <div class="tier-top"><div class="tier-number">04</div><div class="tier-gem">◆</div></div>
             <div class="tier-name" data-i18n="tier_epic">Epic</div>
@@ -1395,7 +1495,7 @@
         </article>
 
         <article class="tier-card tier-legendary">
-          <div class="tier-media"><img src="assets/robinland-legendary.webp" alt="ROBINLAND Legendary" loading="lazy" decoding="async"></div>
+          <div class="tier-media"><img src="assets/robinland-legendary.webp" alt="ROBINLAND Legendary"></div>
           <div class="tier-copy">
             <div class="tier-top"><div class="tier-number">05</div><div class="tier-gem">✦</div></div>
             <div class="tier-name" data-i18n="tier_legendary">Legendary</div>
@@ -1426,7 +1526,7 @@
     <div class="game-frame">
       <span class="corner-tl"></span><span class="corner-br"></span>
       <div class="game-media">
-        <img class="game-preview-image" src="assets/game-preview.webp" alt="ROBINMAP game preview" decoding="async" fetchpriority="high">
+        <img class="game-preview-image" src="assets/game-preview.webp" alt="ROBINMAP game preview">
         <div class="game-media-overlay">
           <span class="game-badge" data-i18n="game_badge">Coming Soon</span>
         </div>
@@ -1470,7 +1570,7 @@
     <h1><span data-i18n="hero_line1">Every piece is drawn</span><br><span class="accent" data-i18n="hero_line2">from a single block hash.</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.</p>
     <div class="hero-actions">
-      <a href="#claim" class="btn-primary" data-i18n="btn_claim">CLAIM YOUR SPOT</a>
+      <a href="#claim" class="btn-primary" data-i18n="btn_claim">MINTING · 16:00 UTC</a>
       <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="btn-ghost" data-i18n="btn_mint">MINT ON OPENSEA ↗</a>
       <a href="#about" class="btn-ghost" data-i18n="btn_howworks">HOW IT WORKS</a>
     </div>
@@ -1499,14 +1599,14 @@
         <div class="row"><span>trait_source</span><span>genesis_block_hash</span></div>
         <div class="row"><span>proof_type</span><span>merkle</span></div>
         <div class="row"><span>holder_revenue_share</span><span>70%</span></div>
-        <div class="row"><span>status</span><span data-i18n="coord_status">pre-claim</span></div>
+        <div class="row"><span>status</span><span data-i18n="coord_status">claim closed · minting 16:00 UTC</span></div>
       </div>
     </div>
   </section>
 
   <section class="section" id="utility">
     <div class="section-head">
-      <div class="section-title" id="claim" data-i18n="claim_title">Claim your spot</div>
+      <div class="section-title" id="claim" data-i18n="claim_title">Spot claim closed</div>
       <div class="section-index mono">02 / 02</div>
     </div>
 
@@ -1514,24 +1614,36 @@
       <div class="claim-scan"></div>
       <div class="claim-inner">
         <div class="claim-left">
-          <h3 data-i18n="claim_h3">Reserve a coordinate.</h3>
-          <p data-i18n="claim_p">Paste the wallet address you'll use to mint. This does not connect a wallet and does not cost anything — it registers your address on the pre-claim list before public mint opens.</p>
+          <h3 data-i18n="claim_h3">Pre-claim is officially closed.</h3>
+          <p data-i18n="claim_p">Thank you to everyone who registered. The ROBINMAP spot claim window has ended — see you at the minting event at 16:00 UTC.</p>
 
           <div class="rt-block">
-            <div class="rt-block-label" data-i18n="rt_step_label">Step 1</div>
-            <div class="rt-block-title" data-i18n="rt_step_title">Retweet to unlock claim</div>
-            <a href="https://x.com/robinhood_rsc20/status/2092501460592574898?s=20" target="_blank" rel="noopener" class="btn-ghost rt-btn" data-i18n="rt_open_btn">OPEN TWEET & RETWEET ↗</a>
+            <div class="rt-block-label" data-i18n="rt_step_label">NEXT STEP</div>
+            <div class="rt-block-title" data-i18n="rt_step_title">Minting Event · 16:00 UTC</div>
+            <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="btn-ghost rt-btn" data-i18n="rt_open_btn">ROBINMAP ON OPENSEA ↗</a>
           </div>
 
           <div class="badge-row">
-            <span class="badge" data-i18n="badge_nowallet">No wallet connection</span>
-            <span class="badge" data-i18n="badge_nopay">No payment</span>
-            <span class="badge" data-i18n="badge_oneentry">One entry per wallet</span>
+            <span class="badge" data-i18n="badge_nowallet">PRE-CLAIM CLOSED</span>
+            <span class="badge" data-i18n="badge_nopay">MINTING · 16:00 UTC</span>
+            <span class="badge" data-i18n="badge_oneentry">SEE YOU AT MINT</span>
           </div>
         </div>
 
         <div>
-          <form id="claim-form">
+          <div class="claim-closed-card">
+            <div class="closed-kicker" data-i18n="closed_kicker">PRE-CLAIM STATUS</div>
+            <div class="closed-icon">✓</div>
+            <h4 data-i18n="closed_title">SPOT CLAIM CLOSED</h4>
+            <p data-i18n="closed_desc">Whitelist pre-claim has officially ended. Thank you to everyone who joined the ROBINMAP journey.</p>
+            <div class="mint-time-card">
+              <span data-i18n="closed_next">NEXT EVENT · MINTING</span>
+              <strong>16:00 UTC</strong>
+            </div>
+            <a href="https://opensea.io/collection/robinmapnft/overview" target="_blank" rel="noopener" class="btn-primary" data-i18n="closed_opensea">VIEW ROBINMAP ON OPENSEA ↗</a>
+            <div class="closed-note" data-i18n="closed_note">See you at the minting event, explorers. 🌍</div>
+          </div>
+          <form id="claim-form" style="display:none;" aria-hidden="true">
             <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
 
             <div>
@@ -1577,12 +1689,12 @@
   /* ---------------- i18n ---------------- */
   const translations = {
     en: {
-      nav_about: "About", nav_utility: "Utility", nav_claim: "Claim", nav_cta: "Claim Spot →",
+      nav_about: "About", nav_utility: "Utility", nav_claim: "Mint Event", nav_cta: "MINT · 16:00 UTC →",
       eyebrow: "Robinhood Chain · Genesis Collection",
       hero_line1: "Every piece is drawn",
       hero_line2: "from a single block hash.",
       hero_sub: "ROBINMAP is a 10,000-piece generative collection where every trait is derived directly from the genesis block hash and verified on-chain with a Merkle proof. No two coordinates are alike.",
-      btn_claim: "CLAIM YOUR SPOT",
+      btn_claim: "MINTING · 16:00 UTC",
       btn_howworks: "HOW IT WORKS",
       btn_mint: "MINT ON OPENSEA ↗",
       nav_mint: "Mint on OpenSea ↗",
@@ -1593,7 +1705,7 @@
       about_title: "The map is the mechanism",
       about_p1: "Rather than randomizing traits off-chain, ROBINMAP reads coordinates directly out of Robinhood Chain's genesis block. Each piece's position, palette, and rarity tier are hash-derived — meaning the collection's layout existed the moment the chain did.",
       about_p2: "Every mint is checkable against a public Merkle proof, so ownership and trait authenticity can be verified independently of the mint site at any time.",
-      coord_status: "pre-claim",
+      coord_status: "claim closed · minting 16:00 UTC",
       nav_game: "Game",
       game_title: "Enter the world",
       game_badge: "Coming Soon",
@@ -1686,20 +1798,20 @@
       legendary_theme: "Celestial capital",
       legendary_resources: "Mythic resource zones, royal structures, unique landmarks, and peak rarity assets.",
       legendary_gameplay: "Reserved for prestige, exclusive experiences, and the strongest long-term utility potential.",
-      claim_title: "Claim your spot",
-      claim_h3: "Reserve a coordinate.",
-      claim_p: "Paste the wallet address you'll use to mint. This does not connect a wallet and does not cost anything — it registers your address on the pre-claim list before public mint opens.",
-      badge_nowallet: "No wallet connection",
-      badge_nopay: "No payment",
-      badge_oneentry: "One entry per wallet",
+      claim_title: "Spot claim closed",
+      claim_h3: "Pre-claim is officially closed.",
+      claim_p: "Thank you to everyone who registered. The ROBINMAP spot claim window has ended — see you at the minting event at 16:00 UTC.",
+      badge_nowallet: "PRE-CLAIM CLOSED",
+      badge_nopay: "MINTING · 16:00 UTC",
+      badge_oneentry: "SEE YOU AT MINT",
       label_wallet: "Wallet address",
       label_handle: "X / Twitter handle (optional)",
       btn_submit: "CLAIM MY SPOT",
       btn_submitting: "SUBMITTING...",
       err_invalid_wallet: "Enter a valid wallet address (starts with 0x, 42 characters).",
-      rt_step_label: "Step 1",
-      rt_step_title: "Retweet to unlock claim",
-      rt_open_btn: "OPEN TWEET & RETWEET ↗",
+      rt_step_label: "NEXT STEP",
+      rt_step_title: "Minting Event · 16:00 UTC",
+      rt_open_btn: "ROBINMAP ON OPENSEA ↗",
       rt_checkbox: "I've retweeted this post",
       err_rt_required: "Please retweet the post and confirm the checkbox before claiming.",
       err_not_connected: "Sheet not connected yet — add your Apps Script Web App URL.",
@@ -1707,15 +1819,21 @@
       err_generic: "Something went wrong. Please try again.",
       err_network: "Network error. Please try again.",
       ok_claimed: "Spot claimed — check your wallet for updates.",
+      closed_kicker: "PRE-CLAIM STATUS",
+      closed_title: "SPOT CLAIM CLOSED",
+      closed_desc: "Whitelist pre-claim has officially ended. Thank you to everyone who joined the ROBINMAP journey.",
+      closed_next: "NEXT EVENT · MINTING",
+      closed_opensea: "VIEW ROBINMAP ON OPENSEA ↗",
+      closed_note: "See you at the minting event, explorers. 🌍",
       footer_line: "© ROBINMAP — a Robscription ecosystem project."
     },
     zh: {
-      nav_about: "关于", nav_utility: "机制", nav_claim: "领取", nav_cta: "领取名额 →",
+      nav_about: "关于", nav_utility: "机制", nav_claim: "铸造活动", nav_cta: "铸造 · 16:00 UTC →",
       eyebrow: "Robinhood Chain · 创世收藏",
       hero_line1: "每一枚都源自",
       hero_line2: "唯一的创世区块哈希。",
       hero_sub: "ROBINMAP 是一个 10,000 枚的生成式收藏系列，每个特征都直接来自创世区块哈希，并通过默克尔证明在链上验证。没有两个坐标是相同的。",
-      btn_claim: "领取名额",
+      btn_claim: "铸造 · 16:00 UTC",
       btn_howworks: "了解机制",
       btn_mint: "前往 OPENSEA 铸造 ↗",
       nav_mint: "前往 OpenSea 铸造 ↗",
@@ -1726,7 +1844,7 @@
       about_title: "地图即机制",
       about_p1: "ROBINMAP 不在链下随机生成特征，而是直接从 Robinhood Chain 的创世区块中读取坐标。每一枚作品的位置、配色和稀有度都由哈希值决定——也就是说，这套收藏的布局在链诞生的那一刻就已经存在。",
       about_p2: "每一次铸造都可以通过公开的默克尔证明进行核验，因此持有权和特征真实性可以随时独立于铸造网站进行验证。",
-      coord_status: "待领取",
+      coord_status: "领取已结束 · 16:00 UTC 铸造",
       nav_game: "游戏",
       game_title: "踏入世界",
       game_badge: "即将推出",
@@ -1819,20 +1937,20 @@
       legendary_theme: "天穹王都",
       legendary_resources: "神话级资源区域、皇家建筑、独特地标，以及顶级稀有资产。",
       legendary_gameplay: "代表声望、专属体验，以及最强的长期功能潜力。",
-      claim_title: "领取你的名额",
-      claim_h3: "预留一个坐标。",
-      claim_p: "粘贴你将用于铸造的钱包地址。此过程不需要连接钱包，也不产生任何费用——你的地址将被登记在公开铸造开始前的预领取名单中。",
-      badge_nowallet: "无需连接钱包",
-      badge_nopay: "无需付款",
-      badge_oneentry: "每个钱包限一次",
+      claim_title: "名额领取已结束",
+      claim_h3: "预领取已正式结束。",
+      claim_p: "感谢所有参与登记的玩家。ROBINMAP 名额领取现已结束——我们将在 16:00 UTC 的铸造活动中再见。",
+      badge_nowallet: "预领取已结束",
+      badge_nopay: "铸造 · 16:00 UTC",
+      badge_oneentry: "铸造活动见",
       label_wallet: "钱包地址",
       label_handle: "X / Twitter 账号（选填）",
       btn_submit: "立即领取",
       btn_submitting: "提交中...",
       err_invalid_wallet: "请输入有效的钱包地址（以 0x 开头，共 42 位字符）。",
-      rt_step_label: "第一步",
-      rt_step_title: "转发推文以解锁领取",
-      rt_open_btn: "打开推文并转发 ↗",
+      rt_step_label: "下一步",
+      rt_step_title: "铸造活动 · 16:00 UTC",
+      rt_open_btn: "在 OPENSEA 查看 ROBINMAP ↗",
       rt_checkbox: "我已转发该推文",
       err_rt_required: "请先转发该推文并勾选确认框，才能领取名额。",
       err_not_connected: "表格尚未连接 —— 请添加你的 Apps Script Web App 网址。",
@@ -1840,6 +1958,12 @@
       err_generic: "出现问题，请重试。",
       err_network: "网络错误，请重试。",
       ok_claimed: "名额已领取 —— 请留意你的钱包更新。",
+      closed_kicker: "预领取状态",
+      closed_title: "名额领取已结束",
+      closed_desc: "白名单预领取已正式结束。感谢所有加入 ROBINMAP 世界的玩家。",
+      closed_next: "下一场活动 · 铸造",
+      closed_opensea: "在 OPENSEA 查看 ROBINMAP ↗",
+      closed_note: "16:00 UTC 铸造活动见，探索者们。🌍",
       footer_line: "© ROBINMAP —— Robscription 生态项目。"
     }
   };
